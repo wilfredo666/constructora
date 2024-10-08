@@ -73,6 +73,7 @@ session_start();
 </head>
 <body>
 <?php
+  //comprobamos las sesiones
 if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == "ok") {
     include "asideMenu.php";
 
