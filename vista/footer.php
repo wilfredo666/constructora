@@ -268,6 +268,50 @@ seccion de modals
 
   });
 
+  // =====> DataTable para Herramientas
+  $(function() {
+    $("#DataTableHerramienta").DataTable({
+      "ordering": true,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "print","colvis", 
+                  /* {
+                    text: 'Imprimir', // Texto del botón personalizado
+                    action: function () { 
+                      var newTab=window.open('vista/material/RepMaterial.php','_blank');
+                      newTab.addEventListener('load', function() {
+                        newTab.print();
+                      });
+                    }
+                  } */
+                 ],
+
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+    }).buttons().container().appendTo('#DataTableHerramienta_wrapper .col-md-6:eq(0)');
+  });
+
+  
+
 
   $(function() {
     $("#DataTable_NVenta").DataTable({

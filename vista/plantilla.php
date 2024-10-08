@@ -79,21 +79,23 @@ session_start();
 
       if (isset($_GET["ruta"])) {
         $rutas_validas = [
-          "inicio",
-          "salir",
-          "VUsuario",
-          "VPersonal",
-          "VProveedor",
-          "VCliente",
-          "VInmueble",
-          "VMaterial",
-          "FNuevaVenta",
-          "FNotaIngreso",
-          "VProyecto",
-          "VSalidaMaterial",
-          "VIngresoMaterial",
-          "RepMateriales",
-          "usuario/permisos" // Añadir rutas anidadas aquí
+            "inicio",
+            "salir",
+            "VUsuario",
+            "VPersonal",
+            "VProveedor",
+            "VCliente",
+            "VInmueble",
+            "VMaterial",
+            "FNuevaVenta",
+            "FNotaIngreso",
+            "VProyecto",
+            "VSalidaMaterial",
+            "VIngresoMaterial",
+            "RepMateriales",
+            "usuario/permisos", // Añadir rutas anidadas aquí
+            //Avanzado desde aqui
+            "VHerramientas",
         ];
 
         if (in_array($_GET["ruta"], $rutas_validas)) {
