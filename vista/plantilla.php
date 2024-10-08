@@ -3,12 +3,12 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistema Constructora</title>
     <link rel="shortcut icon" href="#">
-       <!-- Base URL dinámica -->
+    <!-- Base URL dinámica -->
     <?php $base_url = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . '/'; ?>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo $base_url; ?>assest/plugins/fontawesome-free/css/all.min.css">
@@ -70,52 +70,52 @@ session_start();
         color:#484848;
       }
     </style>
-</head>
-<body>
-<?php
-  //comprobamos las sesiones
-if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == "ok") {
-    include "asideMenu.php";
+  </head>
+  <body>
+    <?php
+    //comprobamos las sesiones
+    if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == "ok") {
+      include "asideMenu.php";
 
-    if (isset($_GET["ruta"])) {
+      if (isset($_GET["ruta"])) {
         $rutas_validas = [
-            "inicio",
-            "salir",
-            "VUsuario",
-            "VPersonal",
-            "VProveedor",
-            "VCliente",
-            "VInmueble",
-            "VMaterial",
-            "FNuevaVenta",
-            "FNotaIngreso",
-            "VProyecto",
-            "VSalidaMaterial",
-            "VIngresoMaterial",
-            "RepMateriales",
-            "usuario/permisos" // Añadir rutas anidadas aquí
+          "inicio",
+          "salir",
+          "VUsuario",
+          "VPersonal",
+          "VProveedor",
+          "VCliente",
+          "VInmueble",
+          "VMaterial",
+          "FNuevaVenta",
+          "FNotaIngreso",
+          "VProyecto",
+          "VSalidaMaterial",
+          "VIngresoMaterial",
+          "RepMateriales",
+          "usuario/permisos" // Añadir rutas anidadas aquí
         ];
 
         if (in_array($_GET["ruta"], $rutas_validas)) {
-            // Definir la carpeta base para las rutas
-            $carpeta_base = "vista/";
+          // Definir la carpeta base para las rutas
+          $carpeta_base = "vista/";
 
-            // Crear la ruta completa
-            $ruta = $carpeta_base . $_GET["ruta"] . ".php";
+          // Crear la ruta completa
+          $ruta = $carpeta_base . $_GET["ruta"] . ".php";
 
-            // Incluir el archivo si existe
-            if (file_exists($ruta)) {
-                include $ruta;
-            } else {
-                echo "Archivo no encontrado: " . htmlspecialchars($ruta);
-            }
+          // Incluir el archivo si existe
+          if (file_exists($ruta)) {
+            include $ruta;
+          } else {
+            echo "Archivo no encontrado: " . htmlspecialchars($ruta);
+          }
         } else {
-            echo "Ruta no válida.";
+          echo "Ruta no válida.";
         }
 
         include "vista/footer.php";
+      }
+    } else {
+      include "vista/login.php";
     }
-} else {
-    include "vista/login.php";
-}
-?>
+    ?>
