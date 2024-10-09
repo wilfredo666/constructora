@@ -22,6 +22,7 @@ require_once "modelo/proyectoModelo.php";
 require_once "modelo/inmuebleModelo.php";
 
 /* prueba para subir al Git */
+/* prueba para subir al Git */
 
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();
