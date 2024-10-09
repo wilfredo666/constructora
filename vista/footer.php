@@ -56,6 +56,7 @@
 <script src="<?php echo $base_url; ?>assest/js/inmueble.js"></script>
 <script src="<?php echo $base_url; ?>assest/js/material.js"></script>
 <script src="<?php echo $base_url; ?>assest/js/proyecto.js"></script>
+<script src="<?php echo $base_url; ?>assest/js/herramienta.js"></script>
 
 
 
