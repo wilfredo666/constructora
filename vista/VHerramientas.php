@@ -45,7 +45,8 @@
                 <?php
                       } else {
                 ?>
-                  <img src='assest/dist/img/herramienta/<?php echo $value["img_herramienta"]; ?>' width='50' height="50">
+                  <img src='assest/dist/img/herramienta/<?php echo $value["img_herramienta"]; ?>' width='50'
+                    height="50">
                 <?php
                       }
                 ?>
@@ -66,13 +67,12 @@
 
             <td>
               <div class="btn-group">
-                <button class="btn btn-sm btn-info" onclick="MVerHerramienta(<?php echo $value["id_herramienta"]; ?>)">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="btn btn-sm btn-secondary" onclick="MEditHerramienta(<?php echo $value["id_herramienta"]; ?>)">
+                <button class="btn btn-sm btn-secondary"
+                  onclick="MEditHerramienta(<?php echo $value["id_herramienta"]; ?>)">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-sm btn-danger" onclick="MEliHerramienta(<?php echo $value["id_herramienta"]; ?>)">
+                <button class="btn btn-sm btn-danger"
+                  onclick="MEliHerramienta(<?php echo $value["id_herramienta"]; ?>)">
                   <i class="fas fa-trash"></i>
                 </button>
               </div>

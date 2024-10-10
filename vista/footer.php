@@ -105,7 +105,6 @@ seccion de modals
 <script src="<?php echo $base_url; ?>assest/plugins/jquery-validation/localization/messages_es.js"></script>
 
 <script>
-
   //validacion para nota de ingreso
   $(function() {
     $.validator.setDefaults({
@@ -191,7 +190,6 @@ seccion de modals
 
     })
   })
-
 </script>
 
 <script>
@@ -223,7 +221,7 @@ seccion de modals
         }
       }
     }).buttons().container().appendTo('#DataTable_wrapper .col-md-6:eq(0)');
-    $('#DataTable td').css('padding', '5px'); 
+    $('#DataTable td').css('padding', '5px');
     //$('#DataTable td').css('text-align', 'center'); 
   });
 
@@ -234,16 +232,16 @@ seccion de modals
       "lengthChange": false,
       "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "colvis",
-                  {
-                    text: 'Imprimir', // Texto del botón personalizado
-                    action: function () { 
-                      var newTab=window.open('vista/material/RepMaterial.php','_blank');
-                      newTab.addEventListener('load', function() {
-                        newTab.print();
-                      });
-                    }
-                  }
-                 ],
+        {
+          text: 'Imprimir', // Texto del botón personalizado
+          action: function() {
+            var newTab = window.open('vista/material/RepMaterial.php', '_blank');
+            newTab.addEventListener('load', function() {
+              newTab.print();
+            });
+          }
+        }
+      ],
 
       language: {
         "decimal": "",
@@ -276,17 +274,17 @@ seccion de modals
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "print","colvis", 
-                  /* {
-                    text: 'Imprimir', // Texto del botón personalizado
-                    action: function () { 
-                      var newTab=window.open('vista/material/RepMaterial.php','_blank');
-                      newTab.addEventListener('load', function() {
-                        newTab.print();
-                      });
-                    }
-                  } */
-                 ],
+      "buttons": ["copy", "csv", "excel", "print", "colvis",
+        /* {
+          text: 'Imprimir', // Texto del botón personalizado
+          action: function () { 
+            var newTab=window.open('vista/material/RepMaterial.php','_blank');
+            newTab.addEventListener('load', function() {
+              newTab.print();
+            });
+          }
+        } */
+      ],
 
       language: {
         "decimal": "",
@@ -310,9 +308,6 @@ seccion de modals
       }
     }).buttons().container().appendTo('#DataTableHerramienta_wrapper .col-md-6:eq(0)');
   });
-
-  
-
 
   $(function() {
     $("#DataTable_NVenta").DataTable({

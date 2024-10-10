@@ -28,7 +28,7 @@ if (isset($ruta["query"])) {
 class ControladorMaterial
 {
 
-  static public function ctrInfoMateriales()
+  static public function ctrInfoMateriales() //OK
   {
     $respuesta = ModeloMaterial::mdlInfoMateriales();
     return $respuesta;
@@ -179,34 +179,40 @@ class ControladorMaterial
     return $respuesta;
   }
 
-  static public function ctrInfoSalidas(){
+  static public function ctrInfoSalidas()
+  {
     $respuesta = ModeloMaterial::mdlInfoSalidas();
     return $respuesta;
   }
 
-  static public function ctrInfoIngresos(){
+  static public function ctrInfoIngresos()
+  {
     $respuesta = ModeloMaterial::mdlInfoIngresos();
     return $respuesta;
   }
 
-  static public function ctrInfoIngreso($id){
+  static public function ctrInfoIngreso($id)
+  {
     $respuesta = ModeloMaterial::mdlInfoIngreso($id);
     return $respuesta;
   }
 
-  static public function ctrInfoSalida($id){
+  static public function ctrInfoSalida($id)
+  {
     $respuesta = ModeloMaterial::mdlInfoSalida($id);
     return $respuesta;
   }
 
-  static public function ctrEliSalida(){
+  static public function ctrEliSalida()
+  {
     require "../modelo/materialModelo.php";
     $id = $_POST["id"];
     $respuesta = ModeloMaterial::mdlEliSalida($id);
     echo $respuesta;
   }
 
-  static public function ctrEliIngreso(){
+  static public function ctrEliIngreso()
+  {
     require "../modelo/materialModelo.php";
     $id = $_POST["id"];
     $respuesta = ModeloMaterial::mdlEliIngreso($id);
@@ -222,12 +228,13 @@ class ControladorMaterial
     echo json_encode($respuesta);
   }
 
-  static public function BusRepMaterial($data){
+  static public function BusRepMaterial($data)
+  {
     //require "../modelo/MaterialModelo.php";
     $data = array(
-      "fechaInicio"=>$data["fechaInicio"],
-      "fechaFin"=> $data["fechaFin"],
-      "ingSal"=> $data["ingSal"]
+      "fechaInicio" => $data["fechaInicio"],
+      "fechaFin" => $data["fechaFin"],
+      "ingSal" => $data["ingSal"]
     );
     $respuesta = ModeloMaterial::BusRepMaterial($data);
 
