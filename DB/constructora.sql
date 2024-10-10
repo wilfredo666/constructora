@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 08, 2024 at 05:44 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Servidor: localhost:3307
+-- Tiempo de generación: 10-10-2024 a las 06:15:46
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `constructora`
+-- Base de datos: `constructora`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adquisicion`
+-- Estructura de tabla para la tabla `adquisicion`
 --
 
 CREATE TABLE `adquisicion` (
@@ -38,7 +38,7 @@ CREATE TABLE `adquisicion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -52,7 +52,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `ap_paterno_cli`, `ap_materno_cli`, `ci_cliente`, `telefono_cli`, `direccion_cli`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `ap_paterno_cli`, `ap_mat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `codigo_material`
+-- Estructura de tabla para la tabla `codigo_material`
 --
 
 CREATE TABLE `codigo_material` (
@@ -76,7 +76,7 @@ CREATE TABLE `codigo_material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `codigo_material`
+-- Volcado de datos para la tabla `codigo_material`
 --
 
 INSERT INTO `codigo_material` (`id_codigo`, `cod_clasificador`, `descripcion`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `codigo_material` (`id_codigo`, `cod_clasificador`, `descripcion`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contrato`
+-- Estructura de tabla para la tabla `contrato`
 --
 
 CREATE TABLE `contrato` (
@@ -127,7 +127,7 @@ CREATE TABLE `contrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `contrato`
+-- Volcado de datos para la tabla `contrato`
 --
 
 INSERT INTO `contrato` (`id_contrato`, `cod_contrato`, `id_cliente`, `fecha_contrato`, `fecha_inicio`, `fecha_entrega`, `tipo_venta`, `archivo_contrato`, `estado_contrato`) VALUES
@@ -140,7 +140,7 @@ INSERT INTO `contrato` (`id_contrato`, `cod_contrato`, `id_cliente`, `fecha_cont
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detalle_cobro`
+-- Estructura de tabla para la tabla `detalle_cobro`
 --
 
 CREATE TABLE `detalle_cobro` (
@@ -154,7 +154,7 @@ CREATE TABLE `detalle_cobro` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `herramienta`
+-- Estructura de tabla para la tabla `herramienta`
 --
 
 CREATE TABLE `herramienta` (
@@ -168,10 +168,18 @@ CREATE TABLE `herramienta` (
   `estado_herramienta` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `herramienta`
+--
+
+INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramienta`, `valor_herramienta`, `costo_herramienta`, `img_herramienta`, `cod_clasificacion_her`, `estado_herramienta`) VALUES
+(1, 'her-001', 'martillo con mango metálico', '150.00', '120.00', NULL, '34800', 1),
+(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ingreso_material`
+-- Estructura de tabla para la tabla `ingreso_material`
 --
 
 CREATE TABLE `ingreso_material` (
@@ -186,7 +194,7 @@ CREATE TABLE `ingreso_material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `ingreso_material`
+-- Volcado de datos para la tabla `ingreso_material`
 --
 
 INSERT INTO `ingreso_material` (`id_ingreso`, `fecha_ingreso`, `cod_ingreso`, `entregado_por`, `id_usuario`, `descripcion`, `detalle_ingreso`, `cod_proyecto`) VALUES
@@ -196,7 +204,7 @@ INSERT INTO `ingreso_material` (`id_ingreso`, `fecha_ingreso`, `cod_ingreso`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ingreso_stock`
+-- Estructura de tabla para la tabla `ingreso_stock`
 --
 
 CREATE TABLE `ingreso_stock` (
@@ -207,7 +215,7 @@ CREATE TABLE `ingreso_stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `ingreso_stock`
+-- Volcado de datos para la tabla `ingreso_stock`
 --
 
 INSERT INTO `ingreso_stock` (`id_ingreso_stock`, `id_material`, `cantidad`, `cod_ingreso`) VALUES
@@ -220,7 +228,7 @@ INSERT INTO `ingreso_stock` (`id_ingreso_stock`, `id_material`, `cantidad`, `cod
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Estructura de tabla para la tabla `item`
 --
 
 CREATE TABLE `item` (
@@ -228,11 +236,11 @@ CREATE TABLE `item` (
   `cod_item` varchar(50) DEFAULT NULL,
   `desc_item` varchar(255) DEFAULT NULL,
   `clasificacion` varchar(100) NOT NULL,
-  `estado_item` tinyint(1) DEFAULT NULL
+  `estado_item` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `item`
+-- Volcado de datos para la tabla `item`
 --
 
 INSERT INTO `item` (`id_item`, `cod_item`, `desc_item`, `clasificacion`, `estado_item`) VALUES
@@ -243,13 +251,15 @@ INSERT INTO `item` (`id_item`, `cod_item`, `desc_item`, `clasificacion`, `estado
 (5, 'C002', 'Casa de 2 habitaciones', 'Casa', 1),
 (6, 'D002', 'Departamento con vista al mar', 'Departamento', 1),
 (7, 'L003', 'Lote en zona este', 'Lote', 1),
-(8, 'C003', 'Casa de lujo con piscina', 'Casa', 0),
-(9, 'D003', 'Departamento de 1 habitación', 'Departamento', 1);
+(8, 'C003', 'Casa con fachada de cemento y ladrillo', 'Casa', 1),
+(9, 'D003', 'Departamento de 1 habitación', 'Departamento', 1),
+(14, 'C004', 'Casa con fachada de cemento', 'Casa', 0),
+(15, 'C005', 'Casa con fachada de Ladrillo', 'Casa', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `material`
+-- Estructura de tabla para la tabla `material`
 --
 
 CREATE TABLE `material` (
@@ -265,19 +275,18 @@ CREATE TABLE `material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `material`
+-- Volcado de datos para la tabla `material`
 --
 
 INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`, `valor_unidad`, `costo_material`, `img_material`, `estado_material`, `cod_clasificador`) VALUES
-(1, 'cod_001', 'Cemento Coboce', 'BL', 80.00, 60.00, '', 1, '34000'),
-(3, 'cod_003', 'Lorem ipsum .', 'kl', 20.00, 11.00, 'birdbot-4.jpg', 1, '32300'),
-(4, 'cod_004', 'Cola', 'ml', 8.00, 5.00, 'tester.jpeg', 1, '30000'),
-(5, 'cod_005', 'lorem', 'KL', 250.00, 200.00, '', 1, '32100');
+(1, 'cod_001', 'Cemento Coboce', 'BL', '80.00', '60.00', '', 1, '34000'),
+(3, 'cod_003', 'Lorem ipsum .', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
+(4, 'cod_004', 'Cola', 'ml', '8.00', '5.00', 'tester.jpeg', 1, '30000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal`
+-- Estructura de tabla para la tabla `personal`
 --
 
 CREATE TABLE `personal` (
@@ -294,7 +303,7 @@ CREATE TABLE `personal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `personal`
+-- Volcado de datos para la tabla `personal`
 --
 
 INSERT INTO `personal` (`id_personal`, `ci_personal`, `ap_paterno`, `ap_materno`, `nombre`, `cargo`, `direccion`, `telefono`, `departamento`, `estado_personal`) VALUES
@@ -303,7 +312,7 @@ INSERT INTO `personal` (`id_personal`, `ci_personal`, `ap_paterno`, `ap_materno`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plan_cobro`
+-- Estructura de tabla para la tabla `plan_cobro`
 --
 
 CREATE TABLE `plan_cobro` (
@@ -317,7 +326,7 @@ CREATE TABLE `plan_cobro` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proveedor`
+-- Estructura de tabla para la tabla `proveedor`
 --
 
 CREATE TABLE `proveedor` (
@@ -334,7 +343,7 @@ CREATE TABLE `proveedor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `proveedor`
+-- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `nombre_empresa`, `nombre_pro`, `ap_paterno_pro`, `ap_materno_pro`, `ci_proveedor`, `direccion_pro`, `telefono_pro`, `email_pro`, `estado_pro`) VALUES
@@ -345,7 +354,7 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre_empresa`, `nombre_pro`, `ap_pat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proyecto`
+-- Estructura de tabla para la tabla `proyecto`
 --
 
 CREATE TABLE `proyecto` (
@@ -362,10 +371,18 @@ CREATE TABLE `proyecto` (
   `estado_proyecto` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `proyecto`
+--
+
+INSERT INTO `proyecto` (`id_proyecto`, `cod_proyecto`, `nombre_proyecto`, `desc_proyecto`, `fecha_creacion`, `fecha_inicio`, `fecha_entrega`, `lugar`, `personal_encargado`, `encargado_superior`, `estado_proyecto`) VALUES
+(3, 'proy-001', 'Instalación de cámaras de Seguridad', 'Proyecto donde se realizara Instalación de cámaras de seguridad, para una institución publica', '2024-10-01', '2024-10-10', '2024-10-30', 'Av. Franco Vale, El Alto', 1, 2, 0),
+(4, 'proy-002', 'Instalación de Gas a Domiciliario', 'Un técnico especializado evalúa la estructura del inmueble para determinar la ruta adecuada para las tuberías de gas', '0000-00-00', '2024-10-21', '0000-00-00', 'El Alto. Zona San Felipe de Seke', 1, 0, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salida_material`
+-- Estructura de tabla para la tabla `salida_material`
 --
 
 CREATE TABLE `salida_material` (
@@ -380,7 +397,7 @@ CREATE TABLE `salida_material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `salida_material`
+-- Volcado de datos para la tabla `salida_material`
 --
 
 INSERT INTO `salida_material` (`id_salida`, `fecha_salida`, `cod_salida`, `solicitado_por`, `id_usuario`, `descripcion`, `detalle_salida`, `cod_proyecto`) VALUES
@@ -390,7 +407,7 @@ INSERT INTO `salida_material` (`id_salida`, `fecha_salida`, `cod_salida`, `solic
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salida_stock`
+-- Estructura de tabla para la tabla `salida_stock`
 --
 
 CREATE TABLE `salida_stock` (
@@ -401,7 +418,7 @@ CREATE TABLE `salida_stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `salida_stock`
+-- Volcado de datos para la tabla `salida_stock`
 --
 
 INSERT INTO `salida_stock` (`id_salida_stock`, `id_material`, `cantidad`, `cod_salida`) VALUES
@@ -412,7 +429,7 @@ INSERT INTO `salida_stock` (`id_salida_stock`, `id_material`, `cantidad`, `cod_s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -425,7 +442,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `estado_usuario`, `categoria`) VALUES
@@ -435,7 +452,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `estado_usua
 -- --------------------------------------------------------
 
 --
--- Table structure for table `venta`
+-- Estructura de tabla para la tabla `venta`
 --
 
 CREATE TABLE `venta` (
@@ -458,47 +475,47 @@ CREATE TABLE `venta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `adquisicion`
+-- Indices de la tabla `adquisicion`
 --
 ALTER TABLE `adquisicion`
   ADD PRIMARY KEY (`id_adquisicion`);
 
 --
--- Indexes for table `cliente`
+-- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indexes for table `codigo_material`
+-- Indices de la tabla `codigo_material`
 --
 ALTER TABLE `codigo_material`
   ADD PRIMARY KEY (`id_codigo`);
 
 --
--- Indexes for table `contrato`
+-- Indices de la tabla `contrato`
 --
 ALTER TABLE `contrato`
   ADD PRIMARY KEY (`id_contrato`);
 
 --
--- Indexes for table `detalle_cobro`
+-- Indices de la tabla `detalle_cobro`
 --
 ALTER TABLE `detalle_cobro`
   ADD PRIMARY KEY (`id_detalle_cobro`);
 
 --
--- Indexes for table `herramienta`
+-- Indices de la tabla `herramienta`
 --
 ALTER TABLE `herramienta`
   ADD PRIMARY KEY (`id_herramienta`);
 
 --
--- Indexes for table `ingreso_material`
+-- Indices de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
   ADD PRIMARY KEY (`id_ingreso`),
@@ -506,7 +523,7 @@ ALTER TABLE `ingreso_material`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `ingreso_stock`
+-- Indices de la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
   ADD PRIMARY KEY (`id_ingreso_stock`),
@@ -514,45 +531,45 @@ ALTER TABLE `ingreso_stock`
   ADD KEY `cod_ingreso` (`cod_ingreso`);
 
 --
--- Indexes for table `item`
+-- Indices de la tabla `item`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id_item`);
 
 --
--- Indexes for table `material`
+-- Indices de la tabla `material`
 --
 ALTER TABLE `material`
   ADD PRIMARY KEY (`id_material`),
   ADD UNIQUE KEY `cod_material` (`cod_material`);
 
 --
--- Indexes for table `personal`
+-- Indices de la tabla `personal`
 --
 ALTER TABLE `personal`
   ADD PRIMARY KEY (`id_personal`);
 
 --
--- Indexes for table `plan_cobro`
+-- Indices de la tabla `plan_cobro`
 --
 ALTER TABLE `plan_cobro`
   ADD PRIMARY KEY (`id_plan_cobro`);
 
 --
--- Indexes for table `proveedor`
+-- Indices de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
 
 --
--- Indexes for table `proyecto`
+-- Indices de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
   ADD PRIMARY KEY (`id_proyecto`),
   ADD UNIQUE KEY `cod_proyecto` (`cod_proyecto`);
 
 --
--- Indexes for table `salida_material`
+-- Indices de la tabla `salida_material`
 --
 ALTER TABLE `salida_material`
   ADD PRIMARY KEY (`id_salida`),
@@ -560,7 +577,7 @@ ALTER TABLE `salida_material`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `salida_stock`
+-- Indices de la tabla `salida_stock`
 --
 ALTER TABLE `salida_stock`
   ADD PRIMARY KEY (`id_salida_stock`),
@@ -568,155 +585,155 @@ ALTER TABLE `salida_stock`
   ADD KEY `cod_salida` (`cod_salida`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `venta`
+-- Indices de la tabla `venta`
 --
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`id_venta`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `adquisicion`
+-- AUTO_INCREMENT de la tabla `adquisicion`
 --
 ALTER TABLE `adquisicion`
   MODIFY `id_adquisicion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cliente`
+-- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `codigo_material`
+-- AUTO_INCREMENT de la tabla `codigo_material`
 --
 ALTER TABLE `codigo_material`
   MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `contrato`
+-- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
   MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `detalle_cobro`
+-- AUTO_INCREMENT de la tabla `detalle_cobro`
 --
 ALTER TABLE `detalle_cobro`
   MODIFY `id_detalle_cobro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `herramienta`
+-- AUTO_INCREMENT de la tabla `herramienta`
 --
 ALTER TABLE `herramienta`
-  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `ingreso_material`
+-- AUTO_INCREMENT de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
   MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `ingreso_stock`
+-- AUTO_INCREMENT de la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
   MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `item`
+-- AUTO_INCREMENT de la tabla `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `material`
+-- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
   MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `personal`
+-- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
   MODIFY `id_personal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `plan_cobro`
+-- AUTO_INCREMENT de la tabla `plan_cobro`
 --
 ALTER TABLE `plan_cobro`
   MODIFY `id_plan_cobro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `proveedor`
+-- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `proyecto`
+-- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `salida_material`
+-- AUTO_INCREMENT de la tabla `salida_material`
 --
 ALTER TABLE `salida_material`
   MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `salida_stock`
+-- AUTO_INCREMENT de la tabla `salida_stock`
 --
 ALTER TABLE `salida_stock`
   MODIFY `id_salida_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `venta`
+-- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
   MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `ingreso_material`
+-- Filtros para la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
   ADD CONSTRAINT `ingreso_material_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Constraints for table `ingreso_stock`
+-- Filtros para la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
   ADD CONSTRAINT `ingreso_stock_ibfk_1` FOREIGN KEY (`id_material`) REFERENCES `material` (`id_material`),
   ADD CONSTRAINT `ingreso_stock_ibfk_2` FOREIGN KEY (`cod_ingreso`) REFERENCES `ingreso_material` (`cod_ingreso`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Constraints for table `salida_material`
+-- Filtros para la tabla `salida_material`
 --
 ALTER TABLE `salida_material`
   ADD CONSTRAINT `salida_material_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Constraints for table `salida_stock`
+-- Filtros para la tabla `salida_stock`
 --
 ALTER TABLE `salida_stock`
   ADD CONSTRAINT `salida_stock_ibfk_1` FOREIGN KEY (`id_material`) REFERENCES `material` (`id_material`),
