@@ -16,17 +16,17 @@ if (isset($ruta["query"])) {
 class ControladorProyecto
 {
 
-  static public function ctrInfoProyectos()
+  static public function ctrInfoProyectos() //ok
   {
     $respuesta = ModeloProyecto::mdlInfoProyectos();
     return $respuesta;
   }
 
-  static public function ctrRegProyecto()
+  static public function ctrRegProyecto() //ok
   {
     require "../modelo/proyectoModelo.php";
 
-    
+
     $data = array(
       "codProyecto" => $_POST["codProyecto"],
       "nomProyecto" => $_POST["nomProyecto"],
@@ -40,13 +40,13 @@ class ControladorProyecto
     echo $respuesta;
   }
 
-  static public function ctrInfoProyecto($id)
+  static public function ctrInfoProyecto($id) //ok
   {
     $respuesta = ModeloProyecto::mdlInfoProyecto($id);
     return $respuesta;
   }
 
-  static public function ctrEditProyecto()
+  static public function ctrEditProyecto() //ok
   {
     require "../modelo/proyectoModelo.php";
 
@@ -65,19 +65,19 @@ class ControladorProyecto
   }
 
 
-  static public function ctrEliProyecto(){
+  static public function ctrEliProyecto() //ok
+  {
     require "../modelo/proyectoModelo.php";
 
-    $id=$_POST["id"];
+    $id = $_POST["id"];
 
     $respuesta = ModeloProyecto::mdlEliProyecto($id);
     echo $respuesta;
-
   }
 
-  static public function ctrCantidadProyectos(){
+  static public function ctrCantidadProyectos()
+  {
     $respuesta = ModeloProyecto::mdlCantidadProyectos();
     return $respuesta;
   }
-
 }

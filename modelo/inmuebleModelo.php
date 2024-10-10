@@ -1,10 +1,12 @@
-<?php 
+<?php
 require_once "conexion.php";
-class ModeloInmueble{
+class ModeloInmueble
+{
 
 
-  static public function mdlInformacionInmueble(){
-    $stmt=Conexion::conectar()->prepare("select * from item");
+  static public function mdlInformacionInmueble() //ok
+  {
+    $stmt = Conexion::conectar()->prepare("select * from item");
     $stmt->execute();
 
     return $stmt->fetchAll();
@@ -13,68 +15,67 @@ class ModeloInmueble{
     $stmt->null;
   }
 
-  static public function mdlRegInmueble($data){
+  static public function mdlRegInmueble($data) //ok
+  {
 
-    $nombre_Inmueble = $data["nombre_Inmueble"];
-    $ap_paterno_cli = $data["ap_paterno_cli"];
-    $ap_materno_cli = $data["ap_materno_cli"];
-    $ci_Inmueble = $data["ci_Inmueble"];
-    $telefono_cli = $data["telefono_cli"];
-    $direccion_cli = $data["direccion_cli"];
+    $cod_item = $data["cod_item"];
+    $desc_item = $data["desc_item"];
+    $clasificacion = $data["clasificacion"];
 
-    $stmt=Conexion::conectar()->prepare("INSERT INTO Inmueble (nombre_Inmueble, ap_paterno_cli, ap_materno_cli, ci_Inmueble, telefono_cli, direccion_cli) 
-        VALUES ('$nombre_Inmueble', '$ap_paterno_cli', '$ap_materno_cli', '$ci_Inmueble', '$telefono_cli', '$direccion_cli')");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO item (cod_item, desc_item, clasificacion) 
+        VALUES ('$cod_item', '$desc_item', '$clasificacion')");
 
-    if($stmt->execute()){
+    if ($stmt->execute()) {
       return "ok";
-    }else{
+    } else {
       return "error";
     }
     $stmt->close();
     $stmt->null;
   }
 
-  static public function mdlInfoInmueble($id){
-    $stmt=Conexion::conectar()->prepare("select * from Inmueble where id_Inmueble=$id");
+  static public function mdlInfoInmueble($id) //ok
+  {
+    $stmt = Conexion::conectar()->prepare("select * from item where id_item=$id");
     $stmt->execute();
     return $stmt->fetch();
     $stmt->close();
     $stmt->null;
   }
 
-  static public function mdlEditInmueble($data){
-    $id_Inmueble = $data["id_Inmueble"];
-    $nombre_Inmueble = $data["nombre_Inmueble"];
-    $ap_paterno_cli = $data["ap_paterno_cli"];
-    $ap_materno_cli = $data["ap_materno_cli"];
-    $ci_Inmueble = $data["ci_Inmueble"];
-    $telefono_cli = $data["telefono_cli"];
-    $direccion_cli = $data["direccion_cli"];
+  static public function mdlEditInmueble($data) //ok
+  {
+    $id_item = $data["id_item"];
+    $cod_item = $data["cod_item"];
+    $desc_item = $data["desc_item"];
+    $clasificacion = $data["clasificacion"];
+    $estado_item = $data["estado_item"];
 
-    $stmt=Conexion::conectar()->prepare("UPDATE Inmueble SET nombre_Inmueble='$nombre_Inmueble',ap_paterno_cli='$ap_paterno_cli',ap_materno_cli='$ap_materno_cli',ci_Inmueble='$ci_Inmueble',telefono_cli='$telefono_cli',direccion_cli='$direccion_cli' WHERE id_Inmueble=$id_Inmueble");
+    $stmt = Conexion::conectar()->prepare("UPDATE item SET cod_item='$cod_item',desc_item='$desc_item',clasificacion='$clasificacion',estado_item='$estado_item' WHERE id_item=$id_item");
 
-    if($stmt->execute()){
+    if ($stmt->execute()) {
       return "ok";
-    }else{
+    } else {
       return "error";
     }
     $stmt->close();
     $stmt->null;
   }
 
-  static public function mdlEliInmueble($id){
-    try{
-      $Inmueble=Conexion::conectar()->prepare("delete from Inmueble where id_Inmueble=$id");
-      $Inmueble->execute();
-    }catch (PDOException $e){
-      $codeError= $e->getCode();
-      if($codeError=="23000"){
+  static public function mdlEliInmueble($id) //ok
+  {
+    $Inmueble = Conexion::conectar()->prepare("select * from item where id_item=$id and estado_item=1");
+    $Inmueble->execute();
+    if ($Inmueble->fetch() > 0) {
+      return "error";
+    } else {
+      $stmt = Conexion::conectar()->prepare("delete from item where id_item=$id");
+      if ($stmt->execute()) {
+        return "ok";
+      } else {
         return "error";
-        $stmt->close();
-        $stmt->null;
       }
     }
-    return "ok";
     $stmt->close();
     $stmt->null;
   }

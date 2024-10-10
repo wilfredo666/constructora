@@ -11,13 +11,13 @@ function MListaInmueble() {
     }
   })
 }
-function MNuevoInmueble() {
+function MNuevoInmueble() { //ok
   $("#modal-lg").modal("show")
 
   var obj = ""
   $.ajax({
     type: "POST",
-    url: "vista/Inmueble/FNuevoInmueble.php",
+    url: "vista/inmueble/FNuevoInmueble.php",
     data: obj,
     success: function (data) {
       $("#content-lg").html(data)
@@ -25,19 +25,18 @@ function MNuevoInmueble() {
   })
 }
 
-function RegInmueble() {
+function RegInmueble() { //ok
 
   var formData = new FormData($("#FormRegInmueble")[0])
 
   $.ajax({
     type: "POST",
-    url: "controlador/InmuebleControlador.php?ctrRegInmueble",
+    url: "controlador/inmuebleControlador.php?ctrRegInmueble",
     data: formData,
     cache: false,
     contentType: false,
     processData: false,
     success: function (data) {
-
       if (data == "ok") {
         Swal.fire({
           icon: 'success',
@@ -61,13 +60,13 @@ function RegInmueble() {
   })
 }
 
-function MEditInmueble(id) {
+function MEditInmueble(id) { //ok
   $("#modal-lg").modal("show")
 
   var obj = ""
   $.ajax({
     type: "POST",
-    url: "vista/Inmueble/FEditInmueble.php?id=" + id,
+    url: "vista/inmueble/FEditInmueble.php?id=" + id,
     data: obj,
     success: function (data) {
       $("#content-lg").html(data)
@@ -75,11 +74,11 @@ function MEditInmueble(id) {
   })
 }
 
-function EditInmueble() {
+function EditInmueble() { //ok
   var formData = new FormData($("#FormEditInmueble")[0])
   $.ajax({
     type: "POST",
-    url: "controlador/InmuebleControlador.php?ctrEditInmueble",
+    url: "controlador/inmuebleControlador.php?ctrEditInmueble",
     data: formData,
     cache: false,
     contentType: false,
@@ -109,7 +108,7 @@ function EditInmueble() {
   })
 }
 
-function MVerInmueble(id) {
+/* function MVerInmueble(id) {
   $("#modal-default").modal("show")
 
   var obj = ""
@@ -121,9 +120,9 @@ function MVerInmueble(id) {
       $("#content-default").html(data)
     }
   })
-}
+} */
 
-function MEliInmueble(id) {
+function MEliInmueble(id) { //ok
   var obj = {
     id: id
   }
@@ -138,7 +137,7 @@ function MEliInmueble(id) {
       $.ajax({
         type: "POST",
         data: obj,
-        url: "controlador/InmuebleControlador.php?ctrEliInmueble",
+        url: "controlador/inmuebleControlador.php?ctrEliInmueble",
         success: function (data) {
           if (data == "ok") {
             Swal.fire({

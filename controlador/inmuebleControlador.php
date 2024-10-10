@@ -17,55 +17,50 @@ if (isset($ruta["query"])) {
 class ControladorInmueble
 {
 
-  static public function ctrInformacionInmueble()
+  static public function ctrInformacionInmueble() //ok
   {
     $respuesta = ModeloInmueble::mdlInformacionInmueble();
     return $respuesta;
   }
 
-  static public function ctrRegInmueble()
+  static public function ctrRegInmueble() //ok
   {
-    require "../modelo/InmuebleModelo.php";
+    require "../modelo/inmuebleModelo.php";
 
     $data = array(
-      "nombre_Inmueble" => $_POST["nombre_Inmueble"],
-      "ap_paterno_cli" => $_POST["ap_paterno_cli"],
-      "ap_materno_cli" => $_POST["ap_materno_cli"],
-      "ci_Inmueble" => $_POST["ci_Inmueble"],
-      "telefono_cli" => $_POST["telefono_cli"],
-      "direccion_cli" => $_POST["direccion_cli"]
+      "cod_item" => $_POST["cod_item"],
+      "desc_item" => $_POST["desc_item"],
+      "clasificacion" => $_POST["clasificacion"],
     );
 
     $respuesta = ModeloInmueble::mdlRegInmueble($data);
     echo $respuesta;
   }
 
-  static public function ctrInfoInmueble($id)
+  static public function ctrInfoInmueble($id) //ok
   {
     $respuesta = ModeloInmueble::mdlInfoInmueble($id);
     return $respuesta;
   }
 
-  static public function ctrEditInmueble()
+  static public function ctrEditInmueble() //ok
   {
-    require "../modelo/InmuebleModelo.php";
+    require "../modelo/inmuebleModelo.php";
 
     $data = array(
-      "id_Inmueble" => $_POST["id_Inmueble"],
-      "nombre_Inmueble" => $_POST["nombre_Inmueble"],
-      "ap_paterno_cli" => $_POST["ap_paterno_cli"],
-      "ap_materno_cli" => $_POST["ap_materno_cli"],
-      "ci_Inmueble" => $_POST["ci_Inmueble"],
-      "telefono_cli" => $_POST["telefono_cli"],
-      "direccion_cli" => $_POST["direccion_cli"]
+      "id_item" => $_POST["id_item"],
+      "cod_item" => $_POST["cod_item"],
+      "desc_item" => $_POST["desc_item"],
+      "clasificacion" => $_POST["clasificacion"],
+      "estado_item" => $_POST["estado_item"],
     );
     $respuesta = ModeloInmueble::mdlEditInmueble($data);
     echo $respuesta;
   }
 
-  static public function ctrEliInmueble()
+  static public function ctrEliInmueble() //ok
   {
-    require "../modelo/InmuebleModelo.php";
+    require "../modelo/inmuebleModelo.php";
     $id = $_POST["id"];
 
     $respuesta = ModeloInmueble::mdlEliInmueble($id);
