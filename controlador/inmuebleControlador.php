@@ -5,7 +5,8 @@ if (isset($ruta["query"])) {
   if (
     $ruta["query"] == "ctrRegInmueble" ||
     $ruta["query"] == "ctrEditInmueble" ||
-    $ruta["query"] == "ctrEliInmueble"
+    $ruta["query"] == "ctrEliInmueble" ||
+    $ruta["query"] == "buscInmueble" 
   ) {
     $metodo = $ruta["query"];
     $Inmueble = new ControladorInmueble();
@@ -65,5 +66,13 @@ class ControladorInmueble
 
     $respuesta = ModeloInmueble::mdlEliInmueble($id);
     echo $respuesta;
+  }
+
+  static public function buscInmueble(){
+    require "../modelo/inmuebleModelo.php";
+    $id = $_POST["id"];
+
+    $respuesta = ModeloInmueble::mdlbuscInmueble($id);
+    echo json_encode ($respuesta);
   }
 }

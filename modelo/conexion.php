@@ -12,16 +12,22 @@ class Conexion
     $db = "constructora";
     $userDB = "root";
     $passDB = "";
-    //para conexion con puerto 3307
-    $port = "3307";
 
-    $link = new PDO("mysql:host=" . $host . ";port=$port;" . "dbname=" . $db, $userDB, $passDB);
+    $link = new PDO("mysql:host=" . $host . ";" . "dbname=" . $db, $userDB, $passDB);
 
     /* =============================
-    para conexion normal descomentar linea 24 y comentar linea (16,18).
-    =================================*/
+         PARA TRABAJAR CON BASE DE DATOS CON PUERTO 3307
+         =================================*/
+   /*  $host = "localhost";
+    $db = "constructora";
+    $userDB = "root";
+    $passDB = "";
+    $port = "3307";
 
-    //$link = new PDO("mysql:host=" . $host . ";" . "dbname=" . $db, $userDB, $passDB);
+    $link = new PDO("mysql:host=" . $host . ";port=$port;" . "dbname=" . $db, $userDB, $passDB); */
+
+
+
     $link->exec("set names utf8");
     return $link;
   }

@@ -79,4 +79,14 @@ class ModeloInmueble
     $stmt->close();
     $stmt->null;
   }
+
+  static public function mdlbuscInmueble($id)
+  {
+
+    $stmt = Conexion::conectar()->prepare("select * from item where id_item=$id");
+    $stmt->execute();
+    return $stmt->fetch();
+    $stmt->close();
+    $stmt->null;
+  }
 }

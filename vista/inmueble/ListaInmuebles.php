@@ -19,8 +19,6 @@ require "../../modelo/inmuebleModelo.php";
         <th>Codigo</th>
         <th>Descripcion</th>
         <th>Categoria</th>
-        <th colspan="2">Estado</th>
-
       </tr>
     </thead>
     <tbody>
@@ -32,24 +30,11 @@ require "../../modelo/inmuebleModelo.php";
         <td><?php echo $value["cod_item"]; ?></td>
         <td><?php echo $value["desc_item"]; ?></td>
         <td><?php echo $value["clasificacion"]; ?></td>
-        <?php 
-        if($value["estado_item"]==1){
-        ?>
-        <td><span class="badge badge-success">Disponible</span></td>
-        <?php
-        }else{
-        ?>
-        <td><span class="badge badge-danger">No diponible</span></td>
-        <?php
-        }
-        ?>
-
         <td>
           <div class="btn-group">
             <button class="btn btn-sm btn-info" onclick="MAgregarInmueble(<?php echo $value['id_item']; ?>)">
               <i class="fas fa-plus"></i>
             </button>
-
           </div>
         </td>
       </tr>

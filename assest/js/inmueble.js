@@ -1,4 +1,4 @@
-function MListaInmueble() {
+function MListaInmueble() { //ok
   $("#modal-lg").modal("show")
 
   var obj = ""
@@ -108,7 +108,7 @@ function EditInmueble() { //ok
   })
 }
 
-/* function MVerInmueble(id) {
+function MVerInmueble(id) {
   $("#modal-default").modal("show")
 
   var obj = ""
@@ -120,7 +120,7 @@ function EditInmueble() { //ok
       $("#content-default").html(data)
     }
   })
-} */
+}
 
 function MEliInmueble(id) { //ok
   var obj = {
@@ -163,4 +163,29 @@ function MEliInmueble(id) { //ok
 
     }
   })
+}
+
+function MAgregarInmueble(id) {
+  var inmueble = document.getElementById("nomVenta"); 
+  var inmuebleBD = document.getElementById("nomVentaBD");
+  var idInmuebleBD = document.getElementById("idInmuebleBD");
+
+  var obj = {
+    id: id
+  }
+  $.ajax({
+    type: "POST",
+    data: obj,
+    url: "controlador/inmuebleControlador.php?buscInmueble",
+    success: function (data) {
+      var datosInmueble = JSON.parse(data);
+console.log(datosInmueble);
+
+      inmueble.value = datosInmueble.desc_item;
+      idInmuebleBD.value = datosInmueble.id_item;
+      inmuebleBD.value = JSON.stringify(datosInmueble);
+      $('#modal-lg').modal('hide');
+      
+    }
+  }) 
 }

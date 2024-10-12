@@ -10,6 +10,7 @@ require_once "controlador/materialControlador.php";
 require_once "controlador/proyectoControlador.php";
 require_once "controlador/inmuebleControlador.php";
 require_once "controlador/herramientaControlador.php";
+require_once "controlador/ventaControlador.php";
 
 
 /* modelos */
@@ -22,6 +23,7 @@ require_once "modelo/materialModelo.php";
 require_once "modelo/proyectoModelo.php";
 require_once "modelo/inmuebleModelo.php";
 require_once "modelo/herramientaModelo.php";
+require_once "modelo/ventaModelo.php";
 
 /* prueba para subir al Git */
 /* prueba para subir al Git */
