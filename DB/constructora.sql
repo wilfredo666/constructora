@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 10-10-2024 a las 06:15:46
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-10-2024 a las 00:05:27
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -173,8 +173,8 @@ CREATE TABLE `herramienta` (
 --
 
 INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramienta`, `valor_herramienta`, `costo_herramienta`, `img_herramienta`, `cod_clasificacion_her`, `estado_herramienta`) VALUES
-(1, 'her-001', 'martillo con mango metálico', '150.00', '120.00', NULL, '34800', 1),
-(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1);
+(1, 'her-001', 'martillo con mango metálico        ', 150.00, 120.00, '', '34700', 1),
+(3, 'her-002', 'Llantas de goma pura, calados                                ', 280.00, 220.00, 'thS.jpg', '34300', 1);
 
 -- --------------------------------------------------------
 
@@ -279,9 +279,9 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`, `valor_unidad`, `costo_material`, `img_material`, `estado_material`, `cod_clasificador`) VALUES
-(1, 'cod_001', 'Cemento Coboce', 'BL', '80.00', '60.00', '', 1, '34000'),
-(3, 'cod_003', 'Lorem ipsum .', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
-(4, 'cod_004', 'Cola', 'ml', '8.00', '5.00', 'tester.jpeg', 1, '30000');
+(1, 'cod_001', 'Cemento Coboce', 'BL', 80.00, 60.00, '', 1, '34000'),
+(3, 'cod_003', 'Lorem ipsum .', 'kl', 20.00, 11.00, 'birdbot-4.jpg', 1, '32300'),
+(4, 'cod_004', 'Cola', 'ml', 8.00, 5.00, 'tester.jpeg', 1, '30000');
 
 -- --------------------------------------------------------
 
@@ -471,8 +471,16 @@ CREATE TABLE `venta` (
   `nro_cuotas` int(11) DEFAULT NULL,
   `forma_pago` varchar(50) DEFAULT NULL,
   `fecha_emision_venta` date NOT NULL,
-  `estado_venta` tinyint(1) DEFAULT NULL
+  `estado_venta` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`id_venta`, `fecha_venta`, `detalle_venta`, `id_cliente`, `id_proyecto`, `monto_contrato`, `archivo_plano`, `archivo_contrato`, `fecha_contrato`, `observaciones_venta`, `fecha_entrega`, `a_cuenta`, `nro_cuotas`, `forma_pago`, `fecha_emision_venta`, `estado_venta`) VALUES
+(1, '2024-10-14', '3', 0, 0, 5000.00, 'pngegg (3).png', 'jesus.pdf', '2024-10-10', 'sin obs', '2024-11-30', 500.00, 8, 'credito', '2024-10-12', NULL),
+(2, '2024-10-31', '5', 5, 4, 8000.00, 'pngwing.com (7).png', 'CARIMBO.pdf', '2024-10-30', 'Sin observacion', '2024-12-31', 3000.00, 500, 'contado', '2024-10-12', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -707,7 +715,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
