@@ -21,7 +21,7 @@
           <th>Método de pago</th>
           <th>Fecha Venta</th>
           <td>
-            <button class="btn btn-primary" onclick="MNuevoVenta()">Nuevo</button>
+            <button class="btn btn-primary" onclick="window.location.href='<?php echo $base_url; ?>/FNuevaVenta';">Nuevo</button>
           </td>
         </tr>
       </thead>
@@ -33,7 +33,7 @@
         ?>
           <tr>
             <td>v-00<?php echo $value["id_venta"]; ?></td>
-            <td><?php echo $value["nombre_cliente"] ." ". $value["ap_paterno_cli"] ." ". $value["ap_materno_cli"]; ?></td>
+            <td><?php echo $value["nombre_cliente"] . " " . $value["ap_paterno_cli"] . " " . $value["ap_materno_cli"]; ?></td>
             <td><?php echo $value["cod_proyecto"]; ?></td>
             <td><?php echo $value["detalle_venta"]; ?></td>
             <td><?php echo $value["monto_contrato"]; ?></td>
