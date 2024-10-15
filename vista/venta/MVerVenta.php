@@ -64,7 +64,7 @@ $venta = ControladorVenta::ctrInfoVenta($id);
             <div class="row">
               <div class="col-12 table-responsive">
                 <table class="table table-striped">
-                  <thead>
+                  <thead class="bg-dark">
                     <tr>
                       <th>Nro</th>
                       <th>Descripcion</th>

@@ -7,9 +7,16 @@
   </section>
 
   <section class="content">
-    <h5 class="table-title">
-      Registrar Nueva Venta
-    </h5>
+    <div class="row justify-content-between pl-4 pr-4 pb-4">
+      <div>
+        <h5 class="table-title">
+          Registrar Nueva Venta.
+        </h5>
+      </div>
+      <div>
+        <button class="btn btn-dark" onclick="window.location.href='<?php echo $base_url; ?>/VListaVenta';"><i class="fa fa-eye" aria-hidden="true"></i> Ver mis Ventas</button>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
         <form action="" id="FormRegVenta" enctype="multipart/form-data" method="POST">

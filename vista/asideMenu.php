@@ -179,6 +179,14 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VIngresoMaterial" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ingreso de Materiales</p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="nav-item">
@@ -194,6 +202,43 @@
                   <a href="VHerramientas" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
                     <p>Lista de Herramientas</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-header">OTROS MOVIMIENTOS</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-tty"></i>
+                <p>
+                  Adquisiciones
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VAdquisicion" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Lista de Adquisiciones</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-money"></i>
+                <p>
+                  Plan de Cobro
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VPlanCobro" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Lista de Plan de Cobros</p>
                   </a>
                 </li>
               </ul>

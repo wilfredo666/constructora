@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2024 a las 00:05:27
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 16-10-2024 a las 00:24:37
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,14 @@ CREATE TABLE `adquisicion` (
   `fecha_adq` date DEFAULT NULL,
   `detalle_adq` text DEFAULT NULL,
   `fecha_entrega` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `adquisicion`
+--
+
+INSERT INTO `adquisicion` (`id_adquisicion`, `id_proveedor`, `fecha_adq`, `detalle_adq`, `fecha_entrega`) VALUES
+(2, 5, '2024-10-17', 'Adquisición de Materiales de Limpieza y otros SI     ', '2024-12-31');
 
 -- --------------------------------------------------------
 
@@ -49,7 +56,7 @@ CREATE TABLE `cliente` (
   `ci_cliente` varchar(50) DEFAULT NULL,
   `telefono_cli` varchar(50) DEFAULT NULL,
   `direccion_cli` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -73,7 +80,7 @@ CREATE TABLE `codigo_material` (
   `id_codigo` int(11) NOT NULL,
   `cod_clasificador` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `codigo_material`
@@ -124,7 +131,7 @@ CREATE TABLE `contrato` (
   `tipo_venta` varchar(50) DEFAULT NULL,
   `archivo_contrato` varchar(255) DEFAULT NULL,
   `estado_contrato` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `contrato`
@@ -149,7 +156,7 @@ CREATE TABLE `detalle_cobro` (
   `monto_cobro` decimal(10,2) DEFAULT NULL,
   `fecha_cobro` date DEFAULT NULL,
   `desc_cobro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -166,15 +173,15 @@ CREATE TABLE `herramienta` (
   `img_herramienta` varchar(255) DEFAULT NULL,
   `cod_clasificacion_her` varchar(50) DEFAULT NULL,
   `estado_herramienta` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `herramienta`
 --
 
 INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramienta`, `valor_herramienta`, `costo_herramienta`, `img_herramienta`, `cod_clasificacion_her`, `estado_herramienta`) VALUES
-(1, 'her-001', 'martillo con mango metálico        ', 150.00, 120.00, '', '34700', 1),
-(3, 'her-002', 'Llantas de goma pura, calados                                ', 280.00, 220.00, 'thS.jpg', '34300', 1);
+(1, 'her-001', 'martillo con mango metálico', '150.00', '120.00', NULL, '34800', 1),
+(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +198,7 @@ CREATE TABLE `ingreso_material` (
   `descripcion` text DEFAULT NULL,
   `detalle_ingreso` text DEFAULT NULL,
   `cod_proyecto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ingreso_material`
@@ -212,7 +219,7 @@ CREATE TABLE `ingreso_stock` (
   `id_material` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `cod_ingreso` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ingreso_stock`
@@ -237,7 +244,7 @@ CREATE TABLE `item` (
   `desc_item` varchar(255) DEFAULT NULL,
   `clasificacion` varchar(100) NOT NULL,
   `estado_item` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `item`
@@ -272,16 +279,16 @@ CREATE TABLE `material` (
   `img_material` varchar(255) DEFAULT NULL,
   `estado_material` tinyint(1) DEFAULT 1,
   `cod_clasificador` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `material`
 --
 
 INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`, `valor_unidad`, `costo_material`, `img_material`, `estado_material`, `cod_clasificador`) VALUES
-(1, 'cod_001', 'Cemento Coboce', 'BL', 80.00, 60.00, '', 1, '34000'),
-(3, 'cod_003', 'Lorem ipsum .', 'kl', 20.00, 11.00, 'birdbot-4.jpg', 1, '32300'),
-(4, 'cod_004', 'Cola', 'ml', 8.00, 5.00, 'tester.jpeg', 1, '30000');
+(1, 'cod_001', 'Cemento Coboce', 'BL', '80.00', '60.00', '', 1, '34000'),
+(3, 'cod_003', 'Lorem ipsum .', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
+(4, 'cod_004', 'Cola', 'ml', '8.00', '5.00', 'tester.jpeg', 1, '30000');
 
 -- --------------------------------------------------------
 
@@ -300,7 +307,7 @@ CREATE TABLE `personal` (
   `telefono` varchar(20) DEFAULT NULL,
   `departamento` varchar(100) DEFAULT NULL,
   `estado_personal` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `personal`
@@ -317,11 +324,19 @@ INSERT INTO `personal` (`id_personal`, `ci_personal`, `ap_paterno`, `ap_materno`
 
 CREATE TABLE `plan_cobro` (
   `id_plan_cobro` int(11) NOT NULL,
-  `id_contrato` int(11) DEFAULT NULL,
-  `forma_pago` varchar(50) DEFAULT NULL,
-  `monto_total` decimal(10,2) DEFAULT NULL,
-  `estado_plan_cobro` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_venta` int(11) DEFAULT NULL,
+  `monto_cobro` decimal(10,2) DEFAULT NULL,
+  `fecha_cobro` date DEFAULT NULL,
+  `observacion_cobro` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `plan_cobro`
+--
+
+INSERT INTO `plan_cobro` (`id_plan_cobro`, `id_venta`, `monto_cobro`, `fecha_cobro`, `observacion_cobro`) VALUES
+(2, 2, '180.00', '2024-10-15', 'segunda cuotaS'),
+(3, 1, '50.00', '2024-10-16', 'primera cuota');
 
 -- --------------------------------------------------------
 
@@ -340,7 +355,7 @@ CREATE TABLE `proveedor` (
   `telefono_pro` varchar(50) DEFAULT NULL,
   `email_pro` varchar(50) DEFAULT NULL,
   `estado_pro` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -349,7 +364,8 @@ CREATE TABLE `proveedor` (
 INSERT INTO `proveedor` (`id_proveedor`, `nombre_empresa`, `nombre_pro`, `ap_paterno_pro`, `ap_materno_pro`, `ci_proveedor`, `direccion_pro`, `telefono_pro`, `email_pro`, `estado_pro`) VALUES
 (4, 'Proveedora Andes', 'Ana', 'Rodriguez', 'Martinez', '34567890', 'Av. Los Andes 101', '555-1010', 'arodriguez@andes.com', 1),
 (5, 'Suministros del Norte', 'Luis', 'Hernandez', 'Vega', '45678901', 'Calle Central 202', '555-2020', 'lhernandez@norte.com', 0),
-(6, 'Pil Andina', 'Leonardo', 'Fabio', 'Beltran', '123458', 'calle los lirios 248', '75483115', 'pil@gmail.com', NULL);
+(6, 'Pil Andina', 'Leonardo', 'Fabio', 'Beltran', '123458', 'calle los lirios 248', '75483115', 'pil@gmail.com', NULL),
+(8, 'Adidas S.A.', 'Josafath ', 'Suarez', 'Peñaloza', '465698945', 'San jose de yunguyo', '2254584567', 'adidas@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -369,7 +385,7 @@ CREATE TABLE `proyecto` (
   `personal_encargado` int(11) DEFAULT NULL,
   `encargado_superior` int(11) NOT NULL,
   `estado_proyecto` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -394,7 +410,7 @@ CREATE TABLE `salida_material` (
   `descripcion` text DEFAULT NULL,
   `detalle_salida` text DEFAULT NULL,
   `cod_proyecto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `salida_material`
@@ -415,7 +431,7 @@ CREATE TABLE `salida_stock` (
   `id_material` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `cod_salida` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `salida_stock`
@@ -439,7 +455,7 @@ CREATE TABLE `usuario` (
   `password` varchar(255) NOT NULL,
   `estado_usuario` tinyint(1) DEFAULT 1,
   `categoria` varchar(50) NOT NULL DEFAULT 'Encargado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -472,15 +488,15 @@ CREATE TABLE `venta` (
   `forma_pago` varchar(50) DEFAULT NULL,
   `fecha_emision_venta` date NOT NULL,
   `estado_venta` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
 INSERT INTO `venta` (`id_venta`, `fecha_venta`, `detalle_venta`, `id_cliente`, `id_proyecto`, `monto_contrato`, `archivo_plano`, `archivo_contrato`, `fecha_contrato`, `observaciones_venta`, `fecha_entrega`, `a_cuenta`, `nro_cuotas`, `forma_pago`, `fecha_emision_venta`, `estado_venta`) VALUES
-(1, '2024-10-14', '3', 0, 0, 5000.00, 'pngegg (3).png', 'jesus.pdf', '2024-10-10', 'sin obs', '2024-11-30', 500.00, 8, 'credito', '2024-10-12', NULL),
-(2, '2024-10-31', '5', 5, 4, 8000.00, 'pngwing.com (7).png', 'CARIMBO.pdf', '2024-10-30', 'Sin observacion', '2024-12-31', 3000.00, 500, 'contado', '2024-10-12', NULL);
+(1, '2024-10-14', 'Casa de 3 habitaciones', 3, 3, '6000.00', '', '1.png', '2024-10-10', 'NIGUNA', '2024-10-31', '500.00', 20, 'credito', '2024-10-14', 1),
+(2, '2024-10-16', 'Lote en zona este', 8, 3, '6000.00', '', 'slide-03.jpg', '2024-10-15', 'Sin Obs', '2024-12-31', '300.00', 30, 'credito', '2024-10-15', 1);
 
 --
 -- Índices para tablas volcadas
@@ -613,7 +629,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `adquisicion`
 --
 ALTER TABLE `adquisicion`
-  MODIFY `id_adquisicion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_adquisicion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -679,13 +695,13 @@ ALTER TABLE `personal`
 -- AUTO_INCREMENT de la tabla `plan_cobro`
 --
 ALTER TABLE `plan_cobro`
-  MODIFY `id_plan_cobro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_plan_cobro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `proyecto`

@@ -11,6 +11,8 @@ require_once "controlador/proyectoControlador.php";
 require_once "controlador/inmuebleControlador.php";
 require_once "controlador/herramientaControlador.php";
 require_once "controlador/ventaControlador.php";
+require_once "controlador/adquisicionControlador.php";
+require_once "controlador/planCobroControlador.php";
 
 
 /* modelos */
@@ -24,6 +26,8 @@ require_once "modelo/proyectoModelo.php";
 require_once "modelo/inmuebleModelo.php";
 require_once "modelo/herramientaModelo.php";
 require_once "modelo/ventaModelo.php";
+require_once "modelo/adquisicionModelo.php";
+require_once "modelo/planCobroModelo.php";
 
 /* prueba para subir al Git */
 /* prueba para subir al Git */

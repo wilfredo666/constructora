@@ -42,6 +42,7 @@ session_start();
     <script type="text/javascript" src="<?php echo $base_url; ?>assest/dist/js/otros/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo $base_url; ?>assest/dist/js/otros/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assest/dist/js/otros/daterangepicker.css" />
+    <link href="https://cdn.jsdelivr.net/npm/fontawesome-4.7@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <style>
       table {
@@ -97,6 +98,8 @@ session_start();
             //Avanzado desde aqui
             "VHerramientas",
             "VListaVenta",
+            "VAdquisicion",
+            "VPlanCobro",
         ];
 
         if (in_array($_GET["ruta"], $rutas_validas)) {

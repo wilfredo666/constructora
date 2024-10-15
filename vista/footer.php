@@ -58,6 +58,8 @@
 <script src="<?php echo $base_url; ?>assest/js/proyecto.js"></script>
 <script src="<?php echo $base_url; ?>assest/js/herramienta.js"></script>
 <script src="<?php echo $base_url; ?>assest/js/venta.js"></script>
+<script src="<?php echo $base_url; ?>assest/js/adquisicion.js"></script>
+<script src="<?php echo $base_url; ?>assest/js/planCobro.js"></script>
 
 
 
@@ -225,6 +227,69 @@ seccion de modals
     $('#DataTable td').css('padding', '5px');
     //$('#DataTable td').css('text-align', 'center'); 
   });
+
+  $(function() {
+    $("#DataTablePlanCobro").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"],
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+    }).buttons().container().appendTo('#DataTablePlanCobro_wrapper .col-md-6:eq(0)');
+    $('#DataTablePlanCobro td').css('padding', '5px');
+  });
+  
+
+  $(function() {
+    $("#DataTableAdquisicion").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"],
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+    }).buttons().container().appendTo('#DataTableAdquisicion_wrapper .col-md-6:eq(0)');
+    $('#DataTableAdquisicion td').css('padding', '5px');
+    //$('#DataTable td').css('text-align', 'center'); 
+  });
+  
 
   $(function() {
     $("#DataTableVenta").DataTable({
