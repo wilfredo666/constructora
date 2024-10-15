@@ -90,7 +90,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-street-view"></i>
+                  <i class="nav-icon fa fa-university"></i>
                   <p>
                     Inmuebles
                     <i class="right fas fa-angle-left"></i>
@@ -107,7 +107,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-street-view"></i>
+                  <i class="nav-icon fa fa-users"></i>
                   <p>
                     Clientes
                     <i class="right fas fa-angle-left"></i>
@@ -125,7 +125,7 @@
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-street-view"></i>
+                  <i class="nav-icon fa fa-user-circle"></i>
                   <p>
                     Proveedores
                     <i class="right fas fa-angle-left"></i>
@@ -217,7 +217,15 @@
                     <p>Nueva Venta</p>
                   </a>
                 </li>
+              </ul>
 
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VListaVenta" class="nav-link">
+                    <i class="fa fa-server nav-icon text-info"></i>
+                    <p>Lista de Ventas</p>
+                  </a>
+                </li>
               </ul>
 
               <ul class="nav nav-treeview">

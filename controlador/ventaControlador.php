@@ -18,12 +18,12 @@ if (isset($ruta["query"])) {
 class ControladorVenta
 {
 
-  /* static public function ctrInformacionVenta() 
+  static public function ctrInfoVentas() //ok
   {
-    $respuesta = ModeloVenta::mdlInformacionVenta();
+    $respuesta = ModeloVenta::mdlInfoVentas();
     return $respuesta;
   }
- */
+
   static public function ctrRegVenta() //ok
   {
     require "../modelo/ventaModelo.php";
@@ -57,6 +57,23 @@ class ControladorVenta
     ); 
 
     $respuesta = ModeloVenta::mdlRegVenta($data);
+    echo $respuesta;
+  }
+
+  
+  static public function ctrInfoVenta($id) //ok
+  {
+    $respuesta = ModeloVenta::mdlInfoVenta($id);
+    return $respuesta;
+  }
+
+  
+  static public function ctrEliVenta() //ok
+  {
+    require "../modelo/ventaModelo.php";
+    $id = $_POST["id"];
+
+    $respuesta = ModeloVenta::mdlEliVenta($id);
     echo $respuesta;
   }
 

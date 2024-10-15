@@ -96,6 +96,7 @@ session_start();
             "usuario/permisos", // Añadir rutas anidadas aquí
             //Avanzado desde aqui
             "VHerramientas",
+            "VListaVenta",
         ];
 
         if (in_array($_GET["ruta"], $rutas_validas)) {

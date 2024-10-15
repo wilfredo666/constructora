@@ -4,16 +4,34 @@ class ModeloVenta
 {
 
 
-  /* static public function mdlInformacionVenta() 
+  static public function mdlInfoVentas() //ok
   {
-    $stmt = Conexion::conectar()->prepare("select * from item");
+    $stmt = Conexion::conectar()->prepare("SELECT * from venta 
+    JOIN item ON item.desc_item=venta.detalle_venta 
+    JOIN cliente ON cliente.id_cliente=venta.id_cliente
+    JOIN proyecto ON proyecto.id_proyecto=venta.id_proyecto
+    WHERE estado_venta=1");
     $stmt->execute();
 
     return $stmt->fetchAll();
 
     $stmt->close();
     $stmt->null;
-  } */
+  }
+
+  static public function mdlInfoVenta($id){
+    $stmt = Conexion::conectar()->prepare("SELECT * FROM venta
+    JOIN item ON item.desc_item=venta.detalle_venta 
+    JOIN cliente ON cliente.id_cliente=venta.id_cliente
+    JOIN proyecto ON proyecto.id_proyecto=venta.id_proyecto
+    where id_venta=$id");
+    $stmt->execute();
+
+    return $stmt->fetch();
+
+    $stmt->close();
+    $stmt->null;
+  }
 
   static public function mdlRegVenta($data) //ok
   {
@@ -45,6 +63,27 @@ class ModeloVenta
     $stmt->close();
     $stmt->null;
   }
+
+  static public function mdlEliVenta($id) //ok
+  {
+    try {
+      $stmt = Conexion::conectar()->prepare("delete from venta where id_venta=$id");
+      $stmt->execute();
+    } catch (PDOException $e) {
+      $codeError = $e->getCode();
+      if ($codeError == "23000") {
+        return "error";
+
+        $stmt->close();
+        $stmt->null;
+      }
+    }
+
+    return "ok";
+    $stmt->close();
+    $stmt->null;
+  }
+  
 
 
 }

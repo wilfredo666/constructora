@@ -182,7 +182,7 @@ function MAgregarInmueble(id) {
 console.log(datosInmueble);
 
       inmueble.value = datosInmueble.desc_item;
-      idInmuebleBD.value = datosInmueble.id_item;
+      idInmuebleBD.value = datosInmueble.desc_item;
       inmuebleBD.value = JSON.stringify(datosInmueble);
       $('#modal-lg').modal('hide');
       
