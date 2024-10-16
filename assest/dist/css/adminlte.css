@@ -55844,3 +55844,9 @@ a.text-muted:hover {
 [class*="sidebar-dark-"] {
   background-color: #2f3351;
 }
+.btn-secondary {
+    color: #fff;
+    background-color: #2f3351;
+    border-color: #6c757d;
+    box-shadow: none;
+}
