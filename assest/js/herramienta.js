@@ -186,3 +186,35 @@ function previsualizarHerramienta() {  //ok
     })
   }
 }
+
+/* ========================================
+CARRITO PARA INGRESO DE HERRAMIENTAS
+============================================ */
+var arregloCarritoNIH = []
+var listaDetalleNIH = document.getElementById("listaDetalleNIH")
+
+function agregarCarritoNIH(id) {
+  var obj = {
+    idHerramienta: id
+  }
+  $.ajax({
+    type: "POST",
+    url: "controlador/herramientaControlador.php?ctrBusHerramienta",
+    data: obj,
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      
+     /*  let objDetalle = {
+        idMaterial: data["id_material"],
+        descMaterial: data["desc_material"],
+        cod_material: data["cod_material"],
+        unidad: data["unidad"],
+        cantMaterial: 1,
+        valor_unidad: data["valor_unidad"],
+      }
+      arregloCarritoNIH.push(objDetalle)
+      dibujarTablaCarritoNI() */
+    }
+  })
+}

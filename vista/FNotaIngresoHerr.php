@@ -3,9 +3,9 @@
   <section class="content">
 
     <!--encabezado-->
-    <form id="FNotaIngreso" class="card card-primary card-outline">
+    <form id="FNotaIngresoHerramienta" class="card card-success card-outline">
       <div class="card-header">
-        <h4 class="card-title" style="font-size:20px;">Nota de Ingreso de Materiales</h4>
+        <h4 class="card-title" style="font-size:20px;">Nota de Ingreso de Herramientas</h4>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -30,14 +30,14 @@
               </thead>
               <tbody>
                 <?php
-                $Material = ControladorMaterial::ctrInfoMateriales();
-                foreach ($Material as $value) {
+                $Herramienta = ControladorHerramienta::ctrInfoHerramientas();
+                foreach ($Herramienta as $value) {
                 ?><tr>
-                <td class="pb-0 mb-0"><?php echo $value["cod_material"]; ?></td>
-                <td class="pb-0 mb-0"><?php echo $value["desc_material"]; ?></td>
+                <td class="pb-0 mb-0"><?php echo $value["cod_herramienta"]; ?></td>
+                <td class="pb-0 mb-0"><?php echo $value["desc_herramienta"]; ?></td>
                 <td class="align-items-center text-center ">
                   <div class="btn-group ">
-                    <button type="button" class="btn btn-info btn-sm" onclick="agregarCarritoNI(<?php echo $value["id_material"]; ?>)">
+                    <button type="button" class="btn btn-success btn-sm" onclick="agregarCarritoNIH(<?php echo $value['id_herramienta']; ?>)">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -113,7 +113,7 @@
                 <td>&nbsp;</td>
               </tr>
             </thead>
-            <tbody id="listaDetalleNI">
+            <tbody id="listaDetalleNIH">
             </tbody>
 
           </table>

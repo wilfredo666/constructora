@@ -6,6 +6,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegHerramienta" ||
     $ruta["query"] == "ctrInfoHerramientas" ||
     $ruta["query"] == "ctrEditHerramienta" ||
+    $ruta["query"] == "ctrBusHerramienta" ||
     $ruta["query"] == "ctrEliHerramienta"
   ) {
     $metodo = $ruta["query"];
@@ -96,13 +97,12 @@ class ControladorHerramienta
     echo $respuesta;
   }
 
-  /* static public function ctrBusHerramienta()
+  static public function ctrBusHerramienta()
   {
-    require "../modelo/HerramientaModelo.php";
+    require "../modelo/herramientaModelo.php";
     $idHerramienta = $_POST["idHerramienta"];
 
     $respuesta = ModeloHerramienta::mdlBusHerramienta($idHerramienta);
-
     echo json_encode($respuesta);
-  } */
+  }
 }

@@ -86,4 +86,15 @@ class ModeloHerramienta
     $stmt->close();
     $stmt->null;
   }
+
+  static public function mdlBusHerramienta($idHerramienta) //ok
+  {
+    $stmt=Conexion::conectar()->prepare("select * from herramienta where id_herramienta=$idHerramienta");
+    $stmt->execute();
+
+    return $stmt->fetch();
+
+    $stmt->close();
+    $stmt->null;
+  }
 }

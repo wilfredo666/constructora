@@ -179,14 +179,6 @@
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VIngresoMaterial" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Ingreso de Materiales</p>
-                  </a>
-                </li>
-              </ul>
             </li>
 
             <li class="nav-item">
@@ -294,25 +286,30 @@
 
 
               <ul class="nav nav-treeview">
-
                 <li class="nav-item">
                   <a href="FNotaIngreso" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Nota de Ingreso</p>
+                    <p>Ingreso Materiales</p>
                   </a>
                 </li>
-
               </ul>
 
               <ul class="nav nav-treeview">
-
                 <li class="nav-item">
                   <a href="VIngresoMaterial" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Reporte Ingresos</p>
+                    <p>Ver Ing Materiales</p>
                   </a>
                 </li>
+              </ul>
 
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="FNotaIngresoHerr" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ingreso Herramientas</p>
+                  </a>
+                </li>
               </ul>
             </li>
 

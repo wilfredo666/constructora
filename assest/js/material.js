@@ -312,6 +312,7 @@ carrito nota de ingreso
 ========================*/
 var arregloCarritoNI = []
 var listaDetalleNI = document.getElementById("listaDetalleNI")
+
 function agregarCarritoNI(id) {
   var obj = {
     idMaterial: id
@@ -325,7 +326,10 @@ function agregarCarritoNI(id) {
       let objDetalle = {
         idMaterial: data["id_material"],
         descMaterial: data["desc_material"],
+        cod_material: data["cod_material"],
+        unidad: data["unidad"],
         cantMaterial: 1,
+        valor_unidad: data["valor_unidad"],
       }
       arregloCarritoNI.push(objDetalle)
       dibujarTablaCarritoNI()
@@ -339,7 +343,9 @@ function dibujarTablaCarritoNI() {
     let fila = document.createElement("tr")
 
     fila.innerHTML = '<td>' + detalle.descMaterial + '</td>' +
-      '<td><input type="number" class="form-control form-control-sm" id="cantProV_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNI(' + detalle.idMaterial + ')">' + '</td>'
+      '<td>' + detalle.unidad + '</td>' +
+      '<td>' + detalle.valor_unidad + '</td>' +
+    '<td><input type="number" class="form-control form-control-sm" id="cantProV_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNI(' + detalle.idMaterial + ')">' + '</td>' 
 
     let tdEliminar = document.createElement("td")
     let botonEliminar = document.createElement("button")
@@ -405,7 +411,7 @@ function emitirNotaIngreso() {
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,
-          title: 'Nota de Ingreso registrada',
+          title: 'Nota de Ingreso de Materiales registrada',
           timer: 1000
         })
         setTimeout(function () {
@@ -424,13 +430,13 @@ function emitirNotaIngreso() {
   })
 }
 
-function MVerIngreso(id){
+function MVerIngreso(id) {
   $("#modal-lg").modal("show")
 
   var obj = ""
   $.ajax({
     type: "POST",
-    url: "vista/material/MVerIngreso.php?id="+id,
+    url: "vista/material/MVerIngreso.php?id=" + id,
     data: obj,
     success: function (data) {
       $("#content-lg").html(data)
@@ -438,13 +444,13 @@ function MVerIngreso(id){
   })
 }
 
-function MVerSalida(id){
+function MVerSalida(id) {
   $("#modal-lg").modal("show")
 
   var obj = ""
   $.ajax({
     type: "POST",
-    url: "vista/material/MVerSalida.php?id="+id,
+    url: "vista/material/MVerSalida.php?id=" + id,
     data: obj,
     success: function (data) {
       $("#content-lg").html(data)
@@ -546,7 +552,7 @@ function MEliIngreso(id) {
   })
 }
 
-function BusRepMaterial(){//pediente sin uso
+function BusRepMaterial() { //pediente sin uso
   // Obtener valores de los campos de fecha
   const fechaInicio = document.getElementById('fechaInicio').value;
   const fechaFin = document.getElementById('fechaFin').value;
@@ -561,10 +567,10 @@ function BusRepMaterial(){//pediente sin uso
     }
   }
 
-  var obj={
-    fechaInicio:fechaInicio,
-    fechaFin:fechaFin,
-    ingSal:ingSal
+  var obj = {
+    fechaInicio: fechaInicio,
+    fechaFin: fechaFin,
+    ingSal: ingSal
   }
 
   $.ajax({

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 00:24:37
+-- Tiempo de generación: 18-10-2024 a las 00:34:11
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -181,7 +181,8 @@ CREATE TABLE `herramienta` (
 
 INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramienta`, `valor_herramienta`, `costo_herramienta`, `img_herramienta`, `cod_clasificacion_her`, `estado_herramienta`) VALUES
 (1, 'her-001', 'martillo con mango metálico', '150.00', '120.00', NULL, '34800', 1),
-(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1);
+(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1),
+(5, 'her-003', 'Tiner para pintura', '60.00', '40.00', '', '34000', 1);
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,9 @@ CREATE TABLE `ingreso_material` (
 
 INSERT INTO `ingreso_material` (`id_ingreso`, `fecha_ingreso`, `cod_ingreso`, `entregado_por`, `id_usuario`, `descripcion`, `detalle_ingreso`, `cod_proyecto`) VALUES
 (4, '2024-04-16', 'NI-01', 1, 1, 'compra', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"3\",\"descMaterial\":\"Arenilla\",\"cantMaterial\":10},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":5}]', 'p-01'),
-(5, '2024-06-02', 'NI-02', 1, 1, 'Adquisicion', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":50}]', 'p-01');
+(5, '2024-06-02', 'NI-02', 1, 1, 'Adquisicion', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":50}]', 'p-01'),
+(7, '2024-10-17', 'NI-03', 4, 1, 'Compras Techado de casa', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":2},{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cantMaterial\":5}]', 'proy-002'),
+(8, '2024-10-17', 'NI-04', 1, 1, 'Construcción puente Topater', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\"}]', 'proy-002');
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,11 @@ INSERT INTO `ingreso_stock` (`id_ingreso_stock`, `id_material`, `cantidad`, `cod
 (10, 3, 10, 'NI-01'),
 (11, 4, 5, 'NI-01'),
 (12, 1, 20, 'NI-02'),
-(13, 4, 50, 'NI-02');
+(13, 4, 50, 'NI-02'),
+(16, 1, 2, 'NI-03'),
+(17, 3, 5, 'NI-03'),
+(18, 3, 8, 'NI-04'),
+(19, 1, 5, 'NI-04');
 
 -- --------------------------------------------------------
 
@@ -287,7 +294,7 @@ CREATE TABLE `material` (
 
 INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`, `valor_unidad`, `costo_material`, `img_material`, `estado_material`, `cod_clasificador`) VALUES
 (1, 'cod_001', 'Cemento Coboce', 'BL', '80.00', '60.00', '', 1, '34000'),
-(3, 'cod_003', 'Lorem ipsum .', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
+(3, 'cod_003', 'Clavos de Calamina 5cm', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
 (4, 'cod_004', 'Cola', 'ml', '8.00', '5.00', 'tester.jpeg', 1, '30000');
 
 -- --------------------------------------------------------
@@ -314,7 +321,8 @@ CREATE TABLE `personal` (
 --
 
 INSERT INTO `personal` (`id_personal`, `ci_personal`, `ap_paterno`, `ap_materno`, `nombre`, `cargo`, `direccion`, `telefono`, `departamento`, `estado_personal`) VALUES
-(1, '7904767', 'Saez', 'Garcia', 'Wilfredo', 'Encargado de Almacen', 'C/ Los Lirios #2048', '71446134', 'Alamacenes', 1);
+(1, '7904767', 'Saez', 'Garcia', 'Wilfredo', 'Encargado de Almacen', 'C/ Los Lirios #2048', '71446134', 'Alamacenes', 1),
+(4, '10037510', 'AMARU', 'FERNANDEZ', 'ELISEO WILFREDO', 'ENCARGADO DE PRODUCCION', 'SAN JOSE DE YUNGUYO', '78854969', 'PRODUCCION ', 1);
 
 -- --------------------------------------------------------
 
@@ -659,19 +667,19 @@ ALTER TABLE `detalle_cobro`
 -- AUTO_INCREMENT de la tabla `herramienta`
 --
 ALTER TABLE `herramienta`
-  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
-  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
-  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `item`
@@ -689,7 +697,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `id_personal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_personal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `plan_cobro`

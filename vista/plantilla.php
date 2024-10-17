@@ -100,6 +100,8 @@ session_start();
             "VListaVenta",
             "VAdquisicion",
             "VPlanCobro",
+            "VIngresoHerramienta",
+            "FNotaIngresoHerr",
         ];
 
         if (in_array($_GET["ruta"], $rutas_validas)) {
