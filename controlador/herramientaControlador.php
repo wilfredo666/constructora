@@ -7,6 +7,8 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrInfoHerramientas" ||
     $ruta["query"] == "ctrEditHerramienta" ||
     $ruta["query"] == "ctrBusHerramienta" ||
+    $ruta["query"] == "ctrRegNotaIngresoHerramienta" ||
+    $ruta["query"] == "ctrEliIngresoHerra" ||
     $ruta["query"] == "ctrEliHerramienta"
   ) {
     $metodo = $ruta["query"];
@@ -104,5 +106,49 @@ class ControladorHerramienta
 
     $respuesta = ModeloHerramienta::mdlBusHerramienta($idHerramienta);
     echo json_encode($respuesta);
+  }
+
+  static public function ctrRegNotaIngresoHerramienta() //ok
+  {
+    session_start(); //inicamos la sesion para obtener el id del usuario actual
+    require_once "../modelo/herramientaModelo.php";
+
+    date_default_timezone_set("America/La_Paz");
+    $fecha = date("Y-m-d");
+    $hora = date("H:i:s");
+
+    $data = array(
+      "fechaHora" => $fecha,
+      "codIngreso" => $_POST["codIngreso"],
+      "usuario" => $_SESSION["idUsuario"],
+      "conceptoIngreso" => $_POST["conceptoIngreso"],
+      "herramientas" => $_POST["herramientas"],
+      "codProyecto" => $_POST["codProyecto"],
+      "provisionador" => $_POST["provisionador"]
+    );
+
+    $respuesta = ModeloHerramienta::mdlRegNotaIngresoHerramientas($data);
+    echo $respuesta;
+  }
+
+  static public function ctrInfoIngresosHerramienta()
+  {
+    $respuesta = ModeloHerramienta::mdlInfoIngresosHerramienta();
+    return $respuesta;
+  }
+
+  static public function ctrInfoIngresoHerramienta($id)
+  {
+    $respuesta = ModeloHerramienta::mdlInfoIngresoHerramienta($id);
+    return $respuesta;
+  }
+
+  // ELIMINACION
+  static public function ctrEliIngresoHerra()
+  {
+    require "../modelo/herramientaModelo.php";
+    $id = $_POST["id"];
+    $respuesta = ModeloHerramienta::mdlEliIngresoHerra($id);
+    echo $respuesta;
   }
 }

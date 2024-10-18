@@ -545,9 +545,6 @@ function MEliIngreso(id) {
           }
         }
       })
-
-
-
     }
   })
 }

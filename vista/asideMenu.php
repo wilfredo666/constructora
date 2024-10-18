@@ -259,27 +259,27 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VListaVenta" class="nav-link">
-                    <i class="fa fa-server nav-icon text-info"></i>
+                    <i class="far fa-circle nav-icon text-info"></i>
                     <p>Lista de Ventas</p>
                   </a>
                 </li>
               </ul>
 
-              <ul class="nav nav-treeview">
+              <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VSalidaMaterial" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
                     <p>Reporte Salidas</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </li>
 
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-boxes"></i>
                 <p>
-                  Ingreso
+                  Ingresos
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -308,6 +308,15 @@
                   <a href="FNotaIngresoHerr" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
                     <p>Ingreso Herramientas</p>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VIngresoHerramienta" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ver Ing Herramientas</p>
                   </a>
                 </li>
               </ul>

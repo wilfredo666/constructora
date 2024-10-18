@@ -97,4 +97,70 @@ class ModeloHerramienta
     $stmt->close();
     $stmt->null;
   }
+
+  static public function mdlRegNotaIngresoHerramientas($data) //ok
+  {
+    $codIngreso = $data["codIngreso"];
+    $conceptoIngreso = $data["conceptoIngreso"];
+    $usuario = $data["usuario"];
+    $fechaHora = $data["fechaHora"];
+    $herramientas = $data["herramientas"];
+    $codProyecto = $data["codProyecto"];
+    $provisionador = $data["provisionador"];
+
+    $stmt = Conexion::conectar()->prepare("insert into ingreso_herramienta(cod_ingreso_herra, entregado_por_herra, id_usuario, descripcion_herra, detalle_ingreso_herra, cod_proyecto, fecha_ingreso_herra) values('NIH-$codIngreso',$provisionador, $usuario, '$conceptoIngreso', '$herramientas', '$codProyecto', '$fechaHora')");
+    
+    if ($stmt->execute()) {
+      return "ok";
+    } else {
+      return "error";
+    }
+
+    return $stmt->fetch();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlInfoIngresosHerramienta(){ //ok
+    $stmt=Conexion::conectar()->prepare("select * from ingreso_herramienta");
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlInfoIngresoHerramienta($id){ //ok
+    $stmt=Conexion::conectar()->prepare("SELECT cod_ingreso_herra, cod_proyecto, fecha_ingreso_herra, descripcion_herra, usuario.nombre AS nomUsuario, personal.nombre AS nomPersonal, personal.ap_paterno AS ap_paterno, personal.ap_materno AS ap_materno, detalle_ingreso_herra FROM ingreso_herramienta 
+    JOIN personal ON personal.id_personal=ingreso_herramienta.entregado_por_herra 
+    JOIN usuario ON usuario.id_usuario=ingreso_herramienta.id_usuario WHERE id_ingreso_herra=$id");
+
+    $stmt->execute();
+
+    return $stmt->fetch();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlEliIngresoHerra($id){ //ok
+    try{
+      $stmt = Conexion::conectar()->prepare("delete from ingreso_herramienta where id_ingreso_herra=$id");
+      $stmt->execute();
+
+    }catch (PDOException $e){
+      $codeError= $e->getCode();
+      if($codeError=="23000"){
+        return "error";
+
+        $stmt->close();
+        $stmt->null;
+      }
+    }
+    return "ok";
+    $stmt->close();
+    $stmt->null;
+  }
 }

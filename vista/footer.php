@@ -108,7 +108,50 @@ seccion de modals
 <script src="<?php echo $base_url; ?>assest/plugins/jquery-validation/localization/messages_es.js"></script>
 
 <script>
-  //validacion para nota de ingreso
+  //INGRESO DE HERRAMIENTAS
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        emitirNotaIngresoHerramienta()
+      }
+    });
+    $("#FNotaIngresoHerramienta").validate({
+      rules: {
+        codIngresoH: {
+          required: true,
+          minlength: 1
+        },
+        conceptoIngresoH: {
+          required: true,
+          minlength: 3
+        },
+        codProyecto: {
+          required: true
+        },
+        provisionador: {
+          required: true
+        }
+      },
+
+      errorElement: "span",
+      errorPlacement: function(error, element) {
+        error.addClass("invalid-feedback")
+        element.closest(".input-group").append(error)
+      },
+      //destacar
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass("is-invalid")
+      },
+
+      //desmarcar
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass("is-invalid")
+      }
+
+    })
+  })
+
+  //validacion para nota de ingreso MATERIALES
   $(function() {
     $.validator.setDefaults({
       submitHandler: function() {
@@ -257,7 +300,7 @@ seccion de modals
     }).buttons().container().appendTo('#DataTablePlanCobro_wrapper .col-md-6:eq(0)');
     $('#DataTablePlanCobro td').css('padding', '5px');
   });
-  
+
 
   $(function() {
     $("#DataTableAdquisicion").DataTable({
@@ -289,7 +332,7 @@ seccion de modals
     $('#DataTableAdquisicion td').css('padding', '5px');
     //$('#DataTable td').css('text-align', 'center'); 
   });
-  
+
 
   $(function() {
     $("#DataTableVenta").DataTable({
@@ -323,7 +366,7 @@ seccion de modals
   });
 
 
-   $(function() {
+  $(function() {
     $("#DataTableMaterial").DataTable({
       "ordering": true,
       "responsive": true,

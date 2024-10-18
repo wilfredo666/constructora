@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2024 a las 00:34:11
+-- Tiempo de generación: 19-10-2024 a las 00:27:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -187,6 +187,32 @@ INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramient
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ingreso_herramienta`
+--
+
+CREATE TABLE `ingreso_herramienta` (
+  `id_ingreso_herra` int(11) NOT NULL,
+  `cod_ingreso_herra` varchar(50) NOT NULL,
+  `entregado_por_herra` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `descripcion_herra` text NOT NULL,
+  `detalle_ingreso_herra` text NOT NULL,
+  `cod_proyecto` varchar(50) NOT NULL,
+  `fecha_ingreso_herra` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ingreso_herramienta`
+--
+
+INSERT INTO `ingreso_herramienta` (`id_ingreso_herra`, `cod_ingreso_herra`, `entregado_por_herra`, `id_usuario`, `descripcion_herra`, `detalle_ingreso_herra`, `cod_proyecto`, `fecha_ingreso_herra`) VALUES
+(1, 'NIH-01', 4, 1, 'almacenamientos', '[{\"idHerramienta\":\"3\",\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":12,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-18'),
+(2, 'NIH-02', 1, 1, 'Construccion de vivienda', '[{\"idHerramienta\":\"1\",\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":2,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":4,\"valor_herramienta\":\"60.00\"}]', 'proy-002', '2024-10-18'),
+(3, 'NIH-03', 4, 1, 'Pintado de cuartos', '[{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":1,\"valor_herramienta\":\"60.00\"}]', 'proy-002', '2024-10-18');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ingreso_material`
 --
 
@@ -206,7 +232,6 @@ CREATE TABLE `ingreso_material` (
 --
 
 INSERT INTO `ingreso_material` (`id_ingreso`, `fecha_ingreso`, `cod_ingreso`, `entregado_por`, `id_usuario`, `descripcion`, `detalle_ingreso`, `cod_proyecto`) VALUES
-(4, '2024-04-16', 'NI-01', 1, 1, 'compra', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"3\",\"descMaterial\":\"Arenilla\",\"cantMaterial\":10},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":5}]', 'p-01'),
 (5, '2024-06-02', 'NI-02', 1, 1, 'Adquisicion', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":50}]', 'p-01'),
 (7, '2024-10-17', 'NI-03', 4, 1, 'Compras Techado de casa', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":2},{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cantMaterial\":5}]', 'proy-002'),
 (8, '2024-10-17', 'NI-04', 1, 1, 'Construcción puente Topater', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\"}]', 'proy-002');
@@ -229,9 +254,6 @@ CREATE TABLE `ingreso_stock` (
 --
 
 INSERT INTO `ingreso_stock` (`id_ingreso_stock`, `id_material`, `cantidad`, `cod_ingreso`) VALUES
-(9, 1, 20, 'NI-01'),
-(10, 3, 10, 'NI-01'),
-(11, 4, 5, 'NI-01'),
 (12, 1, 20, 'NI-02'),
 (13, 4, 50, 'NI-02'),
 (16, 1, 2, 'NI-03'),
@@ -547,6 +569,12 @@ ALTER TABLE `herramienta`
   ADD PRIMARY KEY (`id_herramienta`);
 
 --
+-- Indices de la tabla `ingreso_herramienta`
+--
+ALTER TABLE `ingreso_herramienta`
+  ADD PRIMARY KEY (`id_ingreso_herra`);
+
+--
 -- Indices de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
@@ -670,16 +698,22 @@ ALTER TABLE `herramienta`
   MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `ingreso_herramienta`
+--
+ALTER TABLE `ingreso_herramienta`
+  MODIFY `id_ingreso_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
-  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
-  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `item`

@@ -53,15 +53,15 @@
         <div class="col-md-7">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Código de Ingreso</span>
+              <span class="input-group-text">Código de Ingreso Herramienta</span>
             </div>
-            <input type="text" class="form-control" name="codIngreso" id="codIngreso" placeholder="Inserte el código de ingreso">
+            <input type="text" class="form-control" name="codIngresoH" id="codIngresoH" placeholder="Inserte el código de ingreso">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Concepto de Ingreso</span>
             </div>
-            <input type="text" class="form-control" name="conceptoIngreso" id="conceptoIngreso" placeholder="Ingrese el concepto de ingreso">
+            <input type="text" class="form-control" name="conceptoIngresoH" id="conceptoIngresoH" placeholder="Ingrese el concepto de ingreso">
           </div>
           <div class="row">
             <div class="col-sm-6">

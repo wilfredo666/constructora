@@ -203,18 +203,169 @@ function agregarCarritoNIH(id) {
     data: obj,
     dataType: "json",
     success: function (data) {
-      console.log(data);
+      /* console.log(data); */
       
-     /*  let objDetalle = {
-        idMaterial: data["id_material"],
-        descMaterial: data["desc_material"],
-        cod_material: data["cod_material"],
-        unidad: data["unidad"],
-        cantMaterial: 1,
-        valor_unidad: data["valor_unidad"],
+      let objDetalle = {
+        idHerramienta: data["id_herramienta"],
+        descHerramienta: data["desc_herramienta"],
+        cod_herramienta: data["cod_herramienta"],
+        cod_clasificacion_her: data["cod_clasificacion_her"],
+        cantHerramienta: 1,
+        valor_herramienta: data["valor_herramienta"],
       }
       arregloCarritoNIH.push(objDetalle)
-      dibujarTablaCarritoNI() */
+      dibujarTablaCarritoNIH()
+    }
+  })
+}
+
+function dibujarTablaCarritoNIH() {
+  listaDetalleNIH.innerHTML = ""
+  arregloCarritoNIH.forEach((detalle) => {
+    let fila = document.createElement("tr")
+
+    fila.innerHTML = '<td>' + detalle.descHerramienta + '</td>' +
+      '<td>' + detalle.cod_herramienta + '</td>' +
+      '<td>' + detalle.valor_herramienta + '</td>' +
+    '<td><input type="number" class="form-control form-control-sm" id="cantProVH_' + detalle.idHerramienta + '" value="' + detalle.cantHerramienta + '" onkeyup="actCantidadNIH(' + detalle.idHerramienta + ')">' + '</td>' 
+
+    let tdEliminar = document.createElement("td")
+    let botonEliminar = document.createElement("button")
+    botonEliminar.classList.add("btn", "btn-danger", "btn-sm", "borrar")
+    let icono = document.createElement("i")
+    icono.classList.add("fas", "fa-trash")
+    botonEliminar.appendChild(icono)
+    botonEliminar.onclick = () => {
+      eliminarCarritoNIH(detalle.idHerramienta)
+    }
+
+    tdEliminar.appendChild(botonEliminar)
+    fila.appendChild(tdEliminar)
+
+    listaDetalleNIH.appendChild(fila)
+  })
+}
+
+function actCantidadNIH(idHerr) {
+  let cantidad = parseInt(document.getElementById("cantProVH_" + idHerr).value)
+
+  arregloCarritoNIH.map(function (dato) {
+    //console.log(dato);
+    if (dato.idHerramienta == idHerr) {
+      dato.cantHerramienta = cantidad
+    }
+    return dato
+  })
+}
+
+function eliminarCarritoNIH(idHerr) {
+
+  arregloCarritoNIH = arregloCarritoNIH.filter((detalle) => {
+    if (idHerr != detalle.idHerramienta) {
+      return detalle
+    }
+  })
+  dibujarTablaCarritoNIH()
+}
+
+function emitirNotaIngresoHerramienta() {
+
+  let codIngresoH = document.getElementById("codIngresoH").value
+  let conceptoIngresoH = document.getElementById("conceptoIngresoH").value
+  let codProyecto = document.getElementById("codProyecto").value
+  let provisionador = document.getElementById("provisionador").value
+
+  let obj = {
+    "codIngreso": codIngresoH,
+    "conceptoIngreso": conceptoIngresoH,
+    "herramientas": JSON.stringify(arregloCarritoNIH),
+    "codProyecto": codProyecto,
+    "provisionador": provisionador
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/herramientaControlador.php?ctrRegNotaIngresoHerramienta",
+    data: obj,
+    cache: false,
+    success: function (data) {
+      if (data == "ok") {
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Nota de Ingreso de Herramientas registrada',
+          timer: 1500
+        })
+        setTimeout(function () {
+          location.reload()
+        }, 1200)
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Error de registro',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    }
+  })
+}
+/* ///////// */
+function MVerIngresoHerra(id) {
+  $("#modal-lg").modal("show")
+
+  var obj = ""
+  $.ajax({
+    type: "POST",
+    url: "vista/herramienta/MVerIngresoHerramienta.php?id=" + id,
+    data: obj,
+    success: function (data) {
+      $("#content-lg").html(data)
+    }
+  })
+}
+
+function MEliIngresoHerra(id) {
+  var obj = {
+    id: id
+  }
+
+  Swal.fire({
+    title: 'Esta seguro de eliminar este registro?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Confirmar',
+    denyButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        data: obj,
+        url: "controlador/herramientaControlador.php?ctrEliIngresoHerra",
+        success: function (data) {
+
+          if (data == "ok") {
+            Swal.fire({
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Registro eliminado',
+              timer: 1000
+            })
+            setTimeout(function () {
+              location.reload()
+            }, 1200)
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!!!',
+              text: 'El registro no puede ser eliminado, porque tiene registros hijos',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        }
+      })
     }
   })
 }
