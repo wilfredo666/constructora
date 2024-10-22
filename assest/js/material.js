@@ -204,14 +204,17 @@ function agregarCarritoNS(id) {
 
   $.ajax({
     type: "POST",
-    url: "controlador/MaterialControlador.php?ctrBusMaterial",
+    url: "controlador/materialControlador.php?ctrBusMaterial",
     data: obj,
     dataType: "json",
     success: function (data) {
       let objDetalle = {
         idMaterial: data["id_material"],
         descMaterial: data["desc_material"],
+        cod_material: data["cod_material"],
+        unidad: data["unidad"],
         cantMaterial: 1,
+        valor_unidad: data["valor_unidad"],
       }
       arregloCarritoNS.push(objDetalle)
       dibujarTablaCarritoNS()
@@ -225,7 +228,9 @@ function dibujarTablaCarritoNS() {
     let fila = document.createElement("tr")
 
     fila.innerHTML = '<td>' + detalle.descMaterial + '</td>' +
-      '<td><input type="number" class="form-control form-control-sm" id="cantProV_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNS(' + detalle.idMaterial + ')">' + '</td>'
+      '<td>' + detalle.unidad + '</td>' +
+      '<td>' + detalle.valor_unidad + '</td>' +
+    '<td><input type="number" class="form-control form-control-sm" id="cantProV_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNI(' + detalle.idMaterial + ')">' + '</td>' 
 
     let tdEliminar = document.createElement("td")
     let botonEliminar = document.createElement("button")
@@ -254,7 +259,7 @@ function eliminarCarritoNS(idProd) {
 }
 
 function actCantidadNS(idProd) {
-  let cantidad = parseInt(document.getElementById("cantProV_" + idProd).value)
+  let cantidad = parseInt(document.getElementById("cantProVS_" + idProd).value)
   arregloCarritoNS.map(function (dato) {
     if (dato.idMaterial == idProd) {
       dato.cantMaterial = cantidad

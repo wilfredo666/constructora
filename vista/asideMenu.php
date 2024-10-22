@@ -324,6 +324,53 @@
 
             <li class="nav-item">
               <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-reply-all"></i>
+                <p>
+                  Salidas
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="FNotaSalidaMat" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Salida de Materiales</p>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VIngresoMaterial" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ver Ing Materiales</p>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="FNotaIngresoHerr" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ingreso Herramientas</p>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VIngresoHerramienta" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Ver Ing Herramientas</p>
+                  </a>
+                </li>
+              </ul> -->
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
                   Reportes
