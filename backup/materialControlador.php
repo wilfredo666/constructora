@@ -11,6 +11,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrBusMaterial" ||
     $ruta["query"] == "ctrRegNotaIngreso" ||
     $ruta["query"] == "ctrInfoIngreso" ||
+    $ruta["query"] == "ctrRegNotaSalida" ||
     $ruta["query"] == "ctrEliSalida" ||
     $ruta["query"] == "ctrEliIngreso" ||
     $ruta["query"] == "ctrRegNotaSalida" ||
@@ -140,6 +141,7 @@ class ControladorMaterial
     );
 
     $respuesta = ModeloMaterial::mdlRegNotaSalida($data);
+
     echo $respuesta;
   }
 

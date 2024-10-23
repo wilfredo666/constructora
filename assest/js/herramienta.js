@@ -369,3 +369,127 @@ function MEliIngresoHerra(id) {
     }
   })
 }
+
+/* ========================================
+CARRITO PARA SALIDA DE HERRAMIENTAS
+============================================ */
+var arregloCarritoNSH = []
+var listaDetalleNSH = document.getElementById("listaDetalleNSH")
+
+function agregarCarritoNSH(id) {
+  var obj = {
+    idHerramienta: id
+  }
+  $.ajax({
+    type: "POST",
+    url: "controlador/herramientaControlador.php?ctrBusHerramienta",
+    data: obj,
+    dataType: "json",
+    success: function (data) {
+      /* console.log(data); */
+      
+      let objDetalle = {
+        idHerramienta: data["id_herramienta"],
+        descHerramienta: data["desc_herramienta"],
+        cod_herramienta: data["cod_herramienta"],
+        cod_clasificacion_her: data["cod_clasificacion_her"],
+        cantHerramienta: 1,
+        valor_herramienta: data["valor_herramienta"],
+      }
+      arregloCarritoNSH.push(objDetalle)
+      dibujarTablaCarritoNSH()
+    }
+  })
+}
+
+function dibujarTablaCarritoNSH() {
+  listaDetalleNSH.innerHTML = ""
+  arregloCarritoNSH.forEach((detalle) => {
+    let fila = document.createElement("tr")
+
+    fila.innerHTML = '<td>' + detalle.descHerramienta + '</td>' +
+      '<td>' + detalle.cod_herramienta + '</td>' +
+      '<td>' + detalle.valor_herramienta + '</td>' +
+    '<td><input type="number" class="form-control form-control-sm" id="cantProVHS_' + detalle.idHerramienta + '" value="' + detalle.cantHerramienta + '" onkeyup="actCantidadNSH(' + detalle.idHerramienta + ')">' + '</td>' 
+
+    let tdEliminar = document.createElement("td")
+    let botonEliminar = document.createElement("button")
+    botonEliminar.classList.add("btn", "btn-danger", "btn-sm", "borrar")
+    let icono = document.createElement("i")
+    icono.classList.add("fas", "fa-trash")
+    botonEliminar.appendChild(icono)
+    botonEliminar.onclick = () => {
+      eliminarCarritoNSH(detalle.idHerramienta)
+    }
+
+    tdEliminar.appendChild(botonEliminar)
+    fila.appendChild(tdEliminar)
+
+    listaDetalleNSH.appendChild(fila)
+  })
+}
+
+function actCantidadNSH(idHerr) {
+  let cantidad = parseInt(document.getElementById("cantProVHS_" + idHerr).value)
+
+  arregloCarritoNSH.map(function (dato) {
+    //console.log(dato);
+    if (dato.idHerramienta == idHerr) {
+      dato.cantHerramienta = cantidad
+    }
+    return dato
+  })
+}
+
+function eliminarCarritoNSH(idHerr) {
+  arregloCarritoNSH = arregloCarritoNSH.filter((detalle) => {
+    if (idHerr != detalle.idHerramienta) {
+      return detalle
+    }
+  })
+  dibujarTablaCarritoNSH()
+}
+
+function emitirNotaSalidaH() {
+
+  let codSalidaH = document.getElementById("codSalidaH").value
+  let conceptoSalidaH = document.getElementById("conceptoSalidaH").value
+  let codProyecto = document.getElementById("codProyecto").value
+  let solicitadoPor = document.getElementById("solicitadoPor").value
+
+  let obj = {
+    "codSalidaH": codSalidaH,
+    "conceptoSalidaH": conceptoSalidaH,
+    "herramientas": JSON.stringify(arregloCarritoNSH),
+    "codProyecto": codProyecto,
+    "solicitadoPor": solicitadoPor
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/herramientaControlador.php?ctrRegNotaSalidaHerramienta",
+    data: obj,
+    cache: false,
+    success: function (data) {
+      if (data == "ok") {
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Nota de Salida de Herramientas registrada',
+          timer: 1500
+        })
+        setTimeout(function () {
+          location.reload()
+        }, 1200)
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Error de registro',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    }
+  })
+}

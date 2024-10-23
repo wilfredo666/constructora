@@ -3,9 +3,9 @@
   <section class="content">
 
     <!--encabezado-->
-    <form id="FNotaSalida" class="card card-primary card-outline">
+    <form id="FNotaSalidaH" class="card card-orange card-outline">
       <div class="card-header">
-        <h4 class="card-title" style="font-size:20px;">Nota de Salida de Materiales</h4>
+        <h4 class="card-title" style="font-size:20px;">Nota de Salida de Herramientas</h4>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -30,14 +30,14 @@
               </thead>
               <tbody>
                 <?php
-                $Material = ControladorMaterial::ctrInfoMateriales();
-                foreach ($Material as $value) {
+                $Herramienta = ControladorHerramienta::ctrInfoHerramientas();
+                foreach ($Herramienta as $value) {
                 ?><tr>
-                    <td class="pb-0 mb-0"><?php echo $value["cod_material"]; ?></td>
-                    <td class="pb-0 mb-0"><?php echo $value["desc_material"]; ?></td>
+                    <td class="pb-0 mb-0"><?php echo $value["cod_herramienta"]; ?></td>
+                    <td class="pb-0 mb-0"><?php echo $value["desc_herramienta"]; ?></td>
                     <td class="align-items-center text-center ">
                       <div class="btn-group ">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="agregarCarritoNS(<?php echo $value["id_material"]; ?>)">
+                        <button type="button" class="btn btn-dark btn-sm" onclick="agregarCarritoNSH(<?php echo $value['id_herramienta']; ?>)">
                           <i class="fas fa-plus"></i>
                         </button>
                       </div>
@@ -53,15 +53,15 @@
         <div class="col-md-7">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Código de Salida</span>
+              <span class="input-group-text">Código de Salida Herramienta</span>
             </div>
-            <input type="text" class="form-control" name="codSalida" id="codSalida" placeholder="Inserte el código de salida">
+            <input type="text" class="form-control" name="codSalidaH" id="codSalidaH" placeholder="Inserte el código de Salida">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Concepto de Salida</span>
             </div>
-            <input type="text" class="form-control" name="conceptoSalida" id="conceptoSalida" placeholder="Ingrese el concepto de Salida">
+            <input type="text" class="form-control" name="conceptoSalidaH" id="conceptoSalidaH" placeholder="Ingrese el concepto de Salida">
           </div>
           <div class="row">
             <div class="col-sm-6">
@@ -113,7 +113,7 @@
                 <td>&nbsp;</td>
               </tr>
             </thead>
-            <tbody id="listaDetalleNS">
+            <tbody id="listaDetalleNSH">
             </tbody>
 
           </table>

@@ -8,6 +8,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrEditHerramienta" ||
     $ruta["query"] == "ctrBusHerramienta" ||
     $ruta["query"] == "ctrRegNotaIngresoHerramienta" ||
+    $ruta["query"] == "ctrRegNotaSalidaHerramienta" ||
     $ruta["query"] == "ctrEliIngresoHerra" ||
     $ruta["query"] == "ctrEliHerramienta"
   ) {
@@ -149,6 +150,30 @@ class ControladorHerramienta
     require "../modelo/herramientaModelo.php";
     $id = $_POST["id"];
     $respuesta = ModeloHerramienta::mdlEliIngresoHerra($id);
+    echo $respuesta;
+  }
+
+  //REGISTRO DE SALIDA DE HERRAMIENTAS
+  static public function ctrRegNotaSalidaHerramienta() //ok
+  {
+    session_start();
+    require_once "../modelo/herramientaModelo.php";
+
+    date_default_timezone_set("America/La_Paz");
+    $fecha = date("Y-m-d");
+    $hora = date("H:i:s");
+
+    $data = array(
+      "fechaHora" => $fecha,
+      "codSalidaH" => $_POST["codSalidaH"],
+      "usuario" => $_SESSION["idUsuario"],
+      "conceptoSalidaH" => $_POST["conceptoSalidaH"],
+      "herramientas" => $_POST["herramientas"],
+      "codProyecto" => $_POST["codProyecto"],
+      "solicitadoPor" => $_POST["solicitadoPor"]
+    );
+
+    $respuesta = ModeloHerramienta::mdlRegNotaSalidaHerramientas($data);
     echo $respuesta;
   }
 }

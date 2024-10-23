@@ -158,12 +158,25 @@ class ModeloMaterial
     $codProyecto = $data["codProyecto"];
     $solicitadoPor = $data["solicitadoPor"];
 
-    $stmt = Conexion::conectar()->prepare("insert into salida_material(fecha_salida, cod_salida, solicitado_por, id_usuario, descripcion, detalle_salida, cod_proyecto) values('$fechaHora', 'NS-$codSalida', $solicitadoPor, $usuario, '$conceptoSalida', '$materiales', '$codProyecto')");
+    $stmt = Conexion::conectar()->prepare("insert into salida_material(fecha_salida, cod_salida, solicitado_por, id_usuario, descripcion, detalle_salida, cod_proyecto) values('$fechaHora', 'NS-$codSalida', $solicitante, $usuario, '$conceptoSalida', '$materiales', '$codProyecto')");
 
     if ($stmt->execute()) {
+      //transformar de json a array
+      $salMateriales = json_decode($data["materiales"], true);
+
+      //registrar en la bd - tabla salida stock
+      for ($i = 0; $i < count($salMateriales); $i++) {
+        $idMaterial = $salMateriales[$i]["idMaterial"];
+        $cantMaterial = $salMateriales[$i]["cantMaterial"];
+
+        $salida_sql = Conexion::conectar()->prepare("insert into salida_stock(id_material, cantidad, cod_salida) values($idMaterial, $cantMaterial, 'NS-$codSalida')");
+
+        $salida_sql->execute();
+      }
+
       return "ok";
     } else {
-      return "error";
+      return "n";
     }
 
     $stmt->close();

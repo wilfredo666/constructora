@@ -236,6 +236,49 @@ seccion de modals
 
     })
   })
+
+  //validacion para nota de salida Herramientas
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        emitirNotaSalidaH()
+      }
+    });
+    $("#FNotaSalidaH").validate({
+      rules: {
+        codSalidaH: {
+          required: true,
+          minlength: 1
+        },
+        conceptoSalidaH: {
+          required: true,
+          minlength: 3
+        },
+        codProyecto: {
+          required: true
+        },
+        solicitadoPor: {
+          required: true
+        }
+      },
+
+      errorElement: "span",
+      errorPlacement: function(error, element) {
+        error.addClass("invalid-feedback")
+        element.closest(".input-group").append(error)
+      },
+      //destacar
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass("is-invalid")
+      },
+
+      //desmarcar
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass("is-invalid")
+      }
+
+    })
+  })
 </script>
 
 <script>

@@ -89,7 +89,7 @@ class ModeloHerramienta
 
   static public function mdlBusHerramienta($idHerramienta) //ok
   {
-    $stmt=Conexion::conectar()->prepare("select * from herramienta where id_herramienta=$idHerramienta");
+    $stmt = Conexion::conectar()->prepare("select * from herramienta where id_herramienta=$idHerramienta");
     $stmt->execute();
 
     return $stmt->fetch();
@@ -109,7 +109,7 @@ class ModeloHerramienta
     $provisionador = $data["provisionador"];
 
     $stmt = Conexion::conectar()->prepare("insert into ingreso_herramienta(cod_ingreso_herra, entregado_por_herra, id_usuario, descripcion_herra, detalle_ingreso_herra, cod_proyecto, fecha_ingreso_herra) values('NIH-$codIngreso',$provisionador, $usuario, '$conceptoIngreso', '$herramientas', '$codProyecto', '$fechaHora')");
-    
+
     if ($stmt->execute()) {
       return "ok";
     } else {
@@ -122,8 +122,9 @@ class ModeloHerramienta
     $stmt->null;
   }
 
-  static public function mdlInfoIngresosHerramienta(){ //ok
-    $stmt=Conexion::conectar()->prepare("select * from ingreso_herramienta");
+  static public function mdlInfoIngresosHerramienta()
+  { //ok
+    $stmt = Conexion::conectar()->prepare("select * from ingreso_herramienta");
     $stmt->execute();
 
     return $stmt->fetchAll();
@@ -132,8 +133,9 @@ class ModeloHerramienta
     $stmt->null;
   }
 
-  static public function mdlInfoIngresoHerramienta($id){ //ok
-    $stmt=Conexion::conectar()->prepare("SELECT cod_ingreso_herra, cod_proyecto, fecha_ingreso_herra, descripcion_herra, usuario.nombre AS nomUsuario, personal.nombre AS nomPersonal, personal.ap_paterno AS ap_paterno, personal.ap_materno AS ap_materno, detalle_ingreso_herra FROM ingreso_herramienta 
+  static public function mdlInfoIngresoHerramienta($id)
+  { //ok
+    $stmt = Conexion::conectar()->prepare("SELECT cod_ingreso_herra, cod_proyecto, fecha_ingreso_herra, descripcion_herra, usuario.nombre AS nomUsuario, personal.nombre AS nomPersonal, personal.ap_paterno AS ap_paterno, personal.ap_materno AS ap_materno, detalle_ingreso_herra FROM ingreso_herramienta 
     JOIN personal ON personal.id_personal=ingreso_herramienta.entregado_por_herra 
     JOIN usuario ON usuario.id_usuario=ingreso_herramienta.id_usuario WHERE id_ingreso_herra=$id");
 
@@ -145,14 +147,14 @@ class ModeloHerramienta
     $stmt->null;
   }
 
-  static public function mdlEliIngresoHerra($id){ //ok
-    try{
+  static public function mdlEliIngresoHerra($id)
+  { //ok
+    try {
       $stmt = Conexion::conectar()->prepare("delete from ingreso_herramienta where id_ingreso_herra=$id");
       $stmt->execute();
-
-    }catch (PDOException $e){
-      $codeError= $e->getCode();
-      if($codeError=="23000"){
+    } catch (PDOException $e) {
+      $codeError = $e->getCode();
+      if ($codeError == "23000") {
         return "error";
 
         $stmt->close();
@@ -160,6 +162,31 @@ class ModeloHerramienta
       }
     }
     return "ok";
+    $stmt->close();
+    $stmt->null;
+  }
+
+  //SALIDA DE HERRAMIENTAS
+  static public function mdlRegNotaSalidaHerramientas($data) //ok
+  {
+    $codSalidaH = $data["codSalidaH"];
+    $conceptoSalidaH = $data["conceptoSalidaH"];
+    $usuario = $data["usuario"];
+    $fechaHora = $data["fechaHora"];
+    $herramientas = $data["herramientas"];
+    $codProyecto = $data["codProyecto"];
+    $solicitadoPor = $data["solicitadoPor"];
+
+    $stmt = Conexion::conectar()->prepare("insert into salida_herramienta(cod_salida_herra, solicitado_por, id_usuario, descripcion_herra, detalle_salida_herra, cod_proyecto, fecha_salida) values('NSH-$codSalidaH',$solicitadoPor, $usuario, '$conceptoSalidaH', '$herramientas', '$codProyecto', '$fechaHora')");
+
+    if ($stmt->execute()) {
+      return "ok";
+    } else {
+      return "error";
+    }
+
+    return $stmt->fetch();
+
     $stmt->close();
     $stmt->null;
   }

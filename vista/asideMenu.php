@@ -341,25 +341,25 @@
                 </li>
               </ul>
 
-              <!-- <ul class="nav nav-treeview">
+              <!--  <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VIngresoMaterial" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
                     <p>Ver Ing Materiales</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
 
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="FNotaIngresoHerr" class="nav-link">
+                  <a href="FNotaSalidaHerr" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Ingreso Herramientas</p>
+                    <p>Salida de Herramientas</p>
                   </a>
                 </li>
               </ul>
 
-              <ul class="nav nav-treeview">
+              <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VIngresoHerramienta" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>

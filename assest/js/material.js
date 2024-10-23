@@ -230,7 +230,7 @@ function dibujarTablaCarritoNS() {
     fila.innerHTML = '<td>' + detalle.descMaterial + '</td>' +
       '<td>' + detalle.unidad + '</td>' +
       '<td>' + detalle.valor_unidad + '</td>' +
-    '<td><input type="number" class="form-control form-control-sm" id="cantProV_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNI(' + detalle.idMaterial + ')">' + '</td>' 
+    '<td><input type="number" class="form-control form-control-sm" id="cantProVS_' + detalle.idMaterial + '" value="' + detalle.cantMaterial + '" onkeyup="actCantidadNS(' + detalle.idMaterial + ')">' + '</td>' 
 
     let tdEliminar = document.createElement("td")
     let botonEliminar = document.createElement("button")
@@ -273,13 +273,13 @@ function emitirNotaSalida() {
   let codSalida = document.getElementById("codSalida").value
   let conceptoSalida = document.getElementById("conceptoSalida").value
   let codProyecto = document.getElementById("codProyecto").value
-  let solicitante = document.getElementById("solicitante").value
+  let solicitadoPor = document.getElementById("solicitadoPor").value
   let obj = {
     "codSalida": codSalida,
     "conceptoSalida": conceptoSalida,
     "materiales": JSON.stringify(arregloCarritoNS),
     "codProyecto": codProyecto,
-    "solicitante": solicitante
+    "solicitadoPor": solicitadoPor
   }
 
   $.ajax({
@@ -288,7 +288,6 @@ function emitirNotaSalida() {
     data: obj,
     cache: false,
     success: function (data) {
-
       if (data == "ok") {
         Swal.fire({
           icon: 'success',
