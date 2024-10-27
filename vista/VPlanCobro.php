@@ -19,7 +19,7 @@
           <th>Fecha de Cobro</th>
           <th>Observaciones</th>
           <td>
-            <button class="btn btn-primary" onclick="MNuevoPlanCobro()">Nuevo</button>
+            <!-- <button class="btn btn-primary" onclick="MNuevoPlanCobro()">Nuevo</button> -->
           </td>
         </tr>
       </thead>

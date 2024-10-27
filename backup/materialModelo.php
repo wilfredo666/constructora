@@ -158,7 +158,7 @@ class ModeloMaterial
     $codProyecto = $data["codProyecto"];
     $solicitadoPor = $data["solicitadoPor"];
 
-    $stmt = Conexion::conectar()->prepare("insert into salida_material(fecha_salida, cod_salida, solicitado_por, id_usuario, descripcion, detalle_salida, cod_proyecto) values('$fechaHora', 'NS-$codSalida', $solicitante, $usuario, '$conceptoSalida', '$materiales', '$codProyecto')");
+    $stmt = Conexion::conectar()->prepare("insert into salida_material(fecha_salida, cod_salida, solicitado_por, id_usuario, descripcion, detalle_salida, cod_proyecto) values('$fechaHora', 'NS-$codSalida', $solicitadoPor, $usuario, '$conceptoSalida', '$materiales', '$codProyecto')");
 
     if ($stmt->execute()) {
       //transformar de json a array
@@ -181,6 +181,7 @@ class ModeloMaterial
 
     $stmt->close();
     $stmt->null;
+    
   }
 
   static public function mdlRegNotaIngreso($data)

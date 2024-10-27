@@ -111,12 +111,55 @@ class ModeloHerramienta
     $stmt = Conexion::conectar()->prepare("insert into ingreso_herramienta(cod_ingreso_herra, entregado_por_herra, id_usuario, descripcion_herra, detalle_ingreso_herra, cod_proyecto, fecha_ingreso_herra) values('NIH-$codIngreso',$provisionador, $usuario, '$conceptoIngreso', '$herramientas', '$codProyecto', '$fechaHora')");
 
     if ($stmt->execute()) {
+      $herramientas2 = json_decode($data["herramientas"], true);
+
+      $codIngreso = $data["codIngreso"];
+      //registrar en la bd - tabla ingreso stock herramientas
+      for ($i = 0; $i < count($herramientas2); $i++) {
+        $idHerramienta = $herramientas2[$i]["idHerramienta"];
+        $cantHerramienta = $herramientas2[$i]["cantHerramienta"];
+
+        $ingreso_sql = Conexion::conectar()->prepare("insert into ingreso_stock_herra(id_herramienta, cantidad_h, cod_ingreso_h) values($idHerramienta, $cantHerramienta, 'NIH-$codIngreso')");
+        $ingreso_sql->execute();
+      }
       return "ok";
     } else {
-      return "error";
+      return "n";
     }
 
-    return $stmt->fetch();
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlRegNotaIngreso($data)
+  {
+    $codIngreso = $data["codIngreso"];
+    $conceptoIngreso = $data["conceptoIngreso"];
+    $usuario = $data["usuario"];
+    $fechaHora = $data["fechaHora"];
+    $materiales = $data["materiales"];
+    $codProyecto = $data["codProyecto"];
+    $provisionador = $data["provisionador"];
+
+    $stmt = Conexion::conectar()->prepare("insert into ingreso_material(fecha_ingreso, cod_ingreso , entregado_por, id_usuario , descripcion, detalle_ingreso, cod_proyecto) values('$fechaHora', 'NI-$codIngreso', $provisionador, $usuario, '$conceptoIngreso', '$materiales', '$codProyecto')");
+
+    if ($stmt->execute()) {
+
+      $materiales = json_decode($data["materiales"], true);
+
+      //registrar en la bd - tabla ingreso stock
+      for ($i = 0; $i < count($materiales); $i++) {
+        $idMaterial = $materiales[$i]["idMaterial"];
+        $cantMaterial = $materiales[$i]["cantMaterial"];
+
+        $ingreso_sql = Conexion::conectar()->prepare("insert into ingreso_stock(id_material, cantidad, cod_ingreso) values($idMaterial, $cantMaterial, 'NI-$codIngreso')");
+        $ingreso_sql->execute();
+      }
+
+      return "ok";
+    } else {
+      return "n";
+    }
 
     $stmt->close();
     $stmt->null;
@@ -180,12 +223,21 @@ class ModeloHerramienta
     $stmt = Conexion::conectar()->prepare("insert into salida_herramienta(cod_salida_herra, solicitado_por, id_usuario, descripcion_herra, detalle_salida_herra, cod_proyecto, fecha_salida) values('NSH-$codSalidaH',$solicitadoPor, $usuario, '$conceptoSalidaH', '$herramientas', '$codProyecto', '$fechaHora')");
 
     if ($stmt->execute()) {
+      $herramientas2 = json_decode($data["herramientas"], true);
+
+      $codSalidaH = $data["codSalidaH"];
+      //registrar en la bd - tabla SALIDA stock herramientas
+      for ($i = 0; $i < count($herramientas2); $i++) {
+        $idHerramienta = $herramientas2[$i]["idHerramienta"];
+        $cantHerramienta = $herramientas2[$i]["cantHerramienta"];
+
+        $ingreso_sql = Conexion::conectar()->prepare("insert into salida_stock_herra(id_herramienta_h, cantidad_h, cod_salida_h) values($idHerramienta, $cantHerramienta, 'NSH-$codSalidaH')");
+        $ingreso_sql->execute();
+      }
       return "ok";
     } else {
-      return "error";
+      return "n";
     }
-
-    return $stmt->fetch();
 
     $stmt->close();
     $stmt->null;

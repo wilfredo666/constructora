@@ -6,11 +6,13 @@ class ModeloVenta
 
   static public function mdlInfoVentas() //ok
   {
-    $stmt = Conexion::conectar()->prepare("SELECT * from venta 
-    JOIN item ON item.desc_item=venta.detalle_venta 
+    $stmt = Conexion::conectar()->prepare("SELECT * from venta  
+    /* JOIN item ON item.desc_item=venta.detalle_venta  */
     JOIN cliente ON cliente.id_cliente=venta.id_cliente
-    JOIN proyecto ON proyecto.id_proyecto=venta.id_proyecto
-    WHERE estado_venta=1");
+    JOIN proyecto ON proyecto.id_proyecto=venta.id_proyecto 
+    
+    WHERE estado_venta=1 
+    ORDER BY id_venta DESC ");
     $stmt->execute();
 
     return $stmt->fetchAll();
@@ -20,8 +22,8 @@ class ModeloVenta
   }
 
   static public function mdlInfoVenta($id){
-    $stmt = Conexion::conectar()->prepare("SELECT * FROM venta
-    JOIN item ON item.desc_item=venta.detalle_venta 
+    $stmt = Conexion::conectar()->prepare("SELECT *, venta.fecha_entrega as fecha_entrega FROM venta
+    /* JOIN item ON item.desc_item=venta.detalle_venta  */
     JOIN cliente ON cliente.id_cliente=venta.id_cliente
     JOIN proyecto ON proyecto.id_proyecto=venta.id_proyecto
     where id_venta=$id");

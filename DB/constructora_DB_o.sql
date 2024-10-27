@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 23-10-2024 a las 05:22:01
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-10-2024 a las 04:57:10
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -180,9 +180,9 @@ CREATE TABLE `herramienta` (
 --
 
 INSERT INTO `herramienta` (`id_herramienta`, `cod_herramienta`, `desc_herramienta`, `valor_herramienta`, `costo_herramienta`, `img_herramienta`, `cod_clasificacion_her`, `estado_herramienta`) VALUES
-(1, 'her-001', 'martillo con mango metálico', '150.00', '120.00', NULL, '34800', 1),
-(3, 'her-002', 'Llantas de goma pura, calados                                ', '280.00', '220.00', 'thS.jpg', '34300', 1),
-(5, 'her-003', 'Tiner para pintura', '60.00', '40.00', '', '34000', 1);
+(1, 'her-001', 'martillo con mango metálico', 150.00, 120.00, NULL, '34800', 1),
+(3, 'her-002', 'Llantas de goma pura, calados                                ', 280.00, 220.00, 'thS.jpg', '34300', 1),
+(5, 'her-003', 'Tiner para pintura', 60.00, 40.00, '', '34000', 1);
 
 -- --------------------------------------------------------
 
@@ -209,7 +209,18 @@ INSERT INTO `ingreso_herramienta` (`id_ingreso_herra`, `cod_ingreso_herra`, `ent
 (1, 'NIH-01', 4, 1, 'almacenamientos', '[{\"idHerramienta\":\"3\",\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":12,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-18'),
 (2, 'NIH-02', 1, 1, 'Construccion de vivienda', '[{\"idHerramienta\":\"1\",\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":2,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":4,\"valor_herramienta\":\"60.00\"}]', 'proy-002', '2024-10-18'),
 (3, 'NIH-03', 4, 1, 'Pintado de cuartos', '[{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":1,\"valor_herramienta\":\"60.00\"}]', 'proy-002', '2024-10-18'),
-(5, 'NIH-01', 1, 1, 'compra de mercaderia', '[{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":5,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":2,\"valor_herramienta\":\"280.00\"}]', 'proy-002', '2024-10-22');
+(5, 'NIH-01', 1, 1, 'compra de mercaderia', '[{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":5,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":2,\"valor_herramienta\":\"280.00\"}]', 'proy-002', '2024-10-22'),
+(6, 'NIH-10', 4, 1, 'Compra por importaciones', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":5,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":12,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(7, 'NIH-9', 4, 1, 'Compra por importaciones SDE', '[{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":7,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":14,\"valor_herramienta\":\"280.00\"}]', 'proy-002', '2024-10-26'),
+(8, 'NIH-9', 4, 1, 'Compra por importaciones SDE', '[{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":7,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":14,\"valor_herramienta\":\"280.00\"}]', 'proy-002', '2024-10-26'),
+(9, 'NIH-10', 4, 1, 'Compra por importaciones WEQ', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":5,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":4,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(10, 'NIH-11', 4, 1, 'Compra por importaciones', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":8,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(11, 'NIH-12', 1, 1, 'Compra por importaciones eliseo', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":9,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(12, 'NIH-10', 1, 1, 'Compra por importaciones', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(13, 'NIH-12', 1, 1, 'Compra por importaciones', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":3,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":2,\"valor_herramienta\":\"60.00\"}]', 'proy-001', '2024-10-26'),
+(14, 'NIH-15', 1, 1, 'aDQUISICIONES', '[{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":6,\"valor_herramienta\":\"60.00\"},{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":8,\"valor_herramienta\":\"150.00\"}]', 'proy-001', '2024-10-26'),
+(15, 'NIH-16', 1, 1, 'aDQUISICIONES 2', '[{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":3,\"valor_herramienta\":\"60.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"}]', 'proy-001', '2024-10-26'),
+(16, 'NIH-17', 4, 1, 'aDQUISICIONES 3', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":6,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":7,\"valor_herramienta\":\"150.00\"}]', 'proy-001', '2024-10-26');
 
 -- --------------------------------------------------------
 
@@ -235,7 +246,10 @@ CREATE TABLE `ingreso_material` (
 INSERT INTO `ingreso_material` (`id_ingreso`, `fecha_ingreso`, `cod_ingreso`, `entregado_por`, `id_usuario`, `descripcion`, `detalle_ingreso`, `cod_proyecto`) VALUES
 (5, '2024-06-02', 'NI-02', 1, 1, 'Adquisicion', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":20},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":50}]', 'p-01'),
 (7, '2024-10-17', 'NI-03', 4, 1, 'Compras Techado de casa', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":2},{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cantMaterial\":5}]', 'proy-002'),
-(8, '2024-10-17', 'NI-04', 1, 1, 'Construcción puente Topater', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\"}]', 'proy-002');
+(8, '2024-10-17', 'NI-04', 1, 1, 'Construcción puente Topater', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\"}]', 'proy-002'),
+(10, '2024-10-26', 'NI-8', 4, 1, 'Ingreso por adquisición mayoristas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":6,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":18,\"valor_unidad\":\"8.00\"}]', 'proy-001'),
+(11, '2024-10-26', 'NI-9', 4, 1, 'Ingreso por adquisición SRL', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":12,\"valor_unidad\":\"80.00\"}]', 'proy-001'),
+(17, '2024-10-26', 'NI-15', 1, 1, 'MATERIALES 1', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":4,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":7,\"valor_unidad\":\"8.00\"}]', 'proy-001');
 
 -- --------------------------------------------------------
 
@@ -260,7 +274,43 @@ INSERT INTO `ingreso_stock` (`id_ingreso_stock`, `id_material`, `cantidad`, `cod
 (16, 1, 2, 'NI-03'),
 (17, 3, 5, 'NI-03'),
 (18, 3, 8, 'NI-04'),
-(19, 1, 5, 'NI-04');
+(19, 1, 5, 'NI-04'),
+(22, 3, 6, 'NI-8'),
+(23, 4, 18, 'NI-8'),
+(24, 4, 4, 'NI-9'),
+(25, 3, 8, 'NI-9'),
+(26, 1, 12, 'NI-9'),
+(29, 3, 4, 'NI-15'),
+(30, 4, 7, 'NI-15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ingreso_stock_herra`
+--
+
+CREATE TABLE `ingreso_stock_herra` (
+  `id_ingreso_stock_herra` int(11) NOT NULL,
+  `id_herramienta` int(11) NOT NULL,
+  `cantidad_h` int(11) NOT NULL,
+  `cod_ingreso_h` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ingreso_stock_herra`
+--
+
+INSERT INTO `ingreso_stock_herra` (`id_ingreso_stock_herra`, `id_herramienta`, `cantidad_h`, `cod_ingreso_h`) VALUES
+(1, 3, 5, '0'),
+(2, 5, 4, '0'),
+(3, 3, 8, '0'),
+(4, 5, 5, '0'),
+(5, 3, 4, 'NIH-12'),
+(6, 5, 9, 'NIH-12'),
+(7, 3, 4, 'NIH-10'),
+(8, 5, 5, 'NIH-10'),
+(9, 3, 6, 'NIH-17'),
+(10, 1, 7, 'NIH-17');
 
 -- --------------------------------------------------------
 
@@ -316,9 +366,9 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`, `valor_unidad`, `costo_material`, `img_material`, `estado_material`, `cod_clasificador`) VALUES
-(1, 'cod_001', 'Cemento Coboce', 'BL', '80.00', '60.00', '', 1, '34000'),
-(3, 'cod_003', 'Clavos de Calamina 5cm', 'kl', '20.00', '11.00', 'birdbot-4.jpg', 1, '32300'),
-(4, 'cod_004', 'Cola', 'ml', '8.00', '5.00', 'tester.jpeg', 1, '30000');
+(1, 'cod_001', 'Cemento Coboce', 'BL', 80.00, 60.00, '', 1, '34000'),
+(3, 'cod_003', 'Clavos de Calamina 5cm', 'kl', 20.00, 11.00, 'birdbot-4.jpg', 1, '32300'),
+(4, 'cod_004', 'Cola', 'ml', 8.00, 5.00, 'tester.jpeg', 1, '30000');
 
 -- --------------------------------------------------------
 
@@ -366,8 +416,8 @@ CREATE TABLE `plan_cobro` (
 --
 
 INSERT INTO `plan_cobro` (`id_plan_cobro`, `id_venta`, `monto_cobro`, `fecha_cobro`, `observacion_cobro`) VALUES
-(2, 2, '180.00', '2024-10-15', 'segunda cuotaS'),
-(3, 1, '50.00', '2024-10-16', 'primera cuota');
+(2, 2, 180.00, '2024-10-15', 'segunda cuotaS'),
+(3, 1, 50.00, '2024-10-16', 'primera cuota');
 
 -- --------------------------------------------------------
 
@@ -449,7 +499,11 @@ CREATE TABLE `salida_herramienta` (
 
 INSERT INTO `salida_herramienta` (`id_salida_herra`, `fecha_salida`, `cod_salida_herra`, `solicitado_por`, `id_usuario`, `descripcion_herra`, `detalle_salida_herra`, `cod_proyecto`) VALUES
 (1, '2024-10-22', 'NSH-01', 1, 1, 'CONSTRUCCION', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":2,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001'),
-(2, '2024-10-22', 'NSH-02', 1, 1, 'EDIFICACIONES', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":6,\"valor_herramienta\":\"150.00\"}]', 'proy-002');
+(2, '2024-10-22', 'NSH-02', 1, 1, 'EDIFICACIONES', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":6,\"valor_herramienta\":\"150.00\"}]', 'proy-002'),
+(3, '2024-10-26', 'NSH-1', 4, 1, 'salida otros', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\"}]', 'proy-001'),
+(4, '2024-10-26', 'NSH-10', 4, 1, 'salida otros', '[{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":2,\"valor_herramienta\":\"60.00\"},{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":4,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":6,\"valor_herramienta\":\"280.00\"}]', 'proy-001'),
+(5, '2024-10-26', 'NSH-15', 4, 1, 'salida otros OTROS', '[{\"idHerramienta\":1,\"descHerramienta\":\"martillo con mango metálico\",\"cod_herramienta\":\"her-001\",\"cod_clasificacion_her\":\"34800\",\"cantHerramienta\":4,\"valor_herramienta\":\"150.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":6,\"valor_herramienta\":\"60.00\"},{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":7,\"valor_herramienta\":\"280.00\"}]', 'proy-001'),
+(6, '2024-10-26', 'NSH-16', 4, 1, 'VENTA TIENDAS', '[{\"idHerramienta\":3,\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":6,\"valor_herramienta\":\"280.00\"},{\"idHerramienta\":5,\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":8,\"valor_herramienta\":\"60.00\"}]', 'proy-001');
 
 -- --------------------------------------------------------
 
@@ -475,7 +529,27 @@ CREATE TABLE `salida_material` (
 INSERT INTO `salida_material` (`id_salida`, `fecha_salida`, `cod_salida`, `solicitado_por`, `id_usuario`, `descripcion`, `detalle_salida`, `cod_proyecto`) VALUES
 (1, '2024-04-08', 'NS-01', 1, 1, 'contruccion', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Comboce\",\"cantMaterial\":2}]', 'p-01'),
 (4, '2024-06-02', 'NS-02', 3, 1, 'Derrame', '[{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cantMaterial\":2},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cantMaterial\":5}]', 'p-01'),
-(5, '2024-10-22', 'NS-03', 4, 1, 'Para construcciones', '[{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":12,\"valor_unidad\":\"80.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"}]', 'proy-001');
+(5, '2024-10-22', 'NS-03', 4, 1, 'Para construcciones', '[{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":12,\"valor_unidad\":\"80.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(18, '2024-10-26', 'NS-03', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"}]', 'proy-001'),
+(19, '2024-10-26', 'NS-08', 1, 1, 'Venta tiendas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":5,\"valor_unidad\":\"8.00\"}]', 'proy-001'),
+(20, '2024-10-26', 'NS-11', 1, 1, 'SALIDA PRO DEFECTOS', '[{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(21, '2024-10-26', 'NS-12', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":8,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(22, '2024-10-26', 'NS-13', 1, 1, 'SDF', '[{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":8,\"valor_unidad\":\"80.00\"}]', 'proy-001'),
+(23, '2024-10-26', 'NS-13', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(24, '2024-10-26', 'NS-13', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":2,\"valor_unidad\":\"8.00\"}]', 'proy-001'),
+(25, '2024-10-26', 'NS-13', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":4,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":5,\"valor_unidad\":\"8.00\"}]', 'proy-002'),
+(26, '2024-10-26', 'NS-13', 1, 1, 'Salida por ventas', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":4,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":5,\"valor_unidad\":\"8.00\"}]', 'proy-002'),
+(27, '2024-10-26', 'NS-15', 1, 1, 'ventas 1', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":3,\"valor_unidad\":\"20.00\"},{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":7,\"valor_unidad\":\"80.00\"}]', 'proy-001'),
+(28, '2024-10-26', 'NS-15', 1, 1, 'ventas 1', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":3,\"valor_unidad\":\"20.00\"},{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":7,\"valor_unidad\":\"80.00\"}]', 'proy-001'),
+(29, '2024-10-26', 'NS-12', 1, 1, 'Salida por ventas', '[{\"idMaterial\":1,\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":2,\"valor_unidad\":\"80.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(30, '2024-10-26', 'NS-13', 1, 1, 'SALIDA PRO DEFECTOS', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":6,\"valor_unidad\":\"8.00\"}]', 'proy-001'),
+(31, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(32, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(33, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(34, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(35, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(36, '2024-10-26', 'NS-13', 4, 1, 'Salida por ventas', '[{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\"},{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":7,\"valor_unidad\":\"20.00\"}]', 'proy-001'),
+(37, '2024-10-26', 'NS-15', 4, 1, 'SALIDA POR DEFECTOS DEVOLUCION', '[{\"idMaterial\":3,\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\"},{\"idMaterial\":4,\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":8,\"valor_unidad\":\"8.00\"}]', 'proy-001');
 
 -- --------------------------------------------------------
 
@@ -485,19 +559,41 @@ INSERT INTO `salida_material` (`id_salida`, `fecha_salida`, `cod_salida`, `solic
 
 CREATE TABLE `salida_stock` (
   `id_salida_stock` int(11) NOT NULL,
-  `id_material` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `cod_salida` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_material_m` int(11) NOT NULL,
+  `cantidad_m` int(11) NOT NULL,
+  `cod_salida_m` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `salida_stock`
 --
 
-INSERT INTO `salida_stock` (`id_salida_stock`, `id_material`, `cantidad`, `cod_salida`) VALUES
-(1, 1, 1, 'NS-01'),
-(6, 1, 2, 'NS-02'),
-(7, 4, 5, 'NS-02');
+INSERT INTO `salida_stock` (`id_salida_stock`, `id_material_m`, `cantidad_m`, `cod_salida_m`) VALUES
+(1, 4, 4, 'NS-13'),
+(2, 3, 7, 'NS-13'),
+(3, 3, 5, 'NS-15'),
+(4, 4, 8, 'NS-15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `salida_stock_herra`
+--
+
+CREATE TABLE `salida_stock_herra` (
+  `id_salida_stock_herra` int(11) NOT NULL,
+  `id_herramienta_h` int(11) NOT NULL,
+  `cantidad_h` int(11) NOT NULL,
+  `cod_salida_h` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `salida_stock_herra`
+--
+
+INSERT INTO `salida_stock_herra` (`id_salida_stock_herra`, `id_herramienta_h`, `cantidad_h`, `cod_salida_h`) VALUES
+(4, 3, 6, 'NSH-16'),
+(5, 5, 8, 'NSH-16');
 
 -- --------------------------------------------------------
 
@@ -552,8 +648,11 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`id_venta`, `fecha_venta`, `detalle_venta`, `id_cliente`, `id_proyecto`, `monto_contrato`, `archivo_plano`, `archivo_contrato`, `fecha_contrato`, `observaciones_venta`, `fecha_entrega`, `a_cuenta`, `nro_cuotas`, `forma_pago`, `fecha_emision_venta`, `estado_venta`) VALUES
-(1, '2024-10-14', 'Casa de 3 habitaciones', 3, 3, '6000.00', '', '1.png', '2024-10-10', 'NIGUNA', '2024-10-31', '500.00', 20, 'credito', '2024-10-14', 1),
-(2, '2024-10-16', 'Lote en zona este', 8, 3, '6000.00', '', 'slide-03.jpg', '2024-10-15', 'Sin Obs', '2024-12-31', '300.00', 30, 'credito', '2024-10-15', 1);
+(4, '2024-10-31', '{\"0\":4,\"1\":\"L002\",\"2\":\"Lote en zona sur\",\"3\":\"Lote\",\"4\":0,\"id_item\":4,\"cod_item\":\"L002\",\"desc_item\":\"Lote en zona sur\",\"clasificacion\":\"Lote\",\"estado_item\":0}', 3, 4, 500.00, '', '1 CONCLUSIONES Y RECOMENDACIONES MASSIEL.pdf', '2024-10-26', 's/o', '2024-11-30', 300.00, 50, 'credito', '2024-10-26', 1),
+(5, '2024-11-01', '{\"0\":7,\"1\":\"L003\",\"2\":\"Lote en zona este\",\"3\":\"Lote\",\"4\":1,\"id_item\":7,\"cod_item\":\"L003\",\"desc_item\":\"Lote en zona este\",\"clasificacion\":\"Lote\",\"estado_item\":1}', 8, 3, 420.00, 'WhatsApp Image 2024-10-23 at 9.08.48 PM.jpeg', '', '2024-10-26', '', '2024-11-15', 12.00, 22, 'credito', '2024-10-26', 1),
+(6, '2024-10-24', '{\"id_item\":8,\"cod_item\":\"C003\",\"desc_item\":\"Casa con fachada de cemento y ladrillo\",\"clasificacion\":\"Casa\",\"estado_item\":1}', 3, 4, 200.00, '', 'WhatsApp Image 2024-10-25 at 17.29.55.jpeg', '2024-10-26', '', '2024-11-02', 20.00, 10, 'credito', '2024-10-26', 1),
+(7, '2024-10-23', '{\"id_item\":14,\"cod_item\":\"C004\",\"desc_item\":\"Casa con fachada de cemento\",\"clasificacion\":\"Casa\"}', 2, 3, 400.00, '', '', '2024-10-26', 'ninguna', '2024-10-24', 200.00, 20, 'contado', '2024-10-26', 1),
+(8, '2024-10-18', '{\"id_item\":2,\"cod_item\":\"C001\",\"desc_item\":\"Casa de 3 habitaciones\",\"clasificacion\":\"Casa\"}', 8, 3, 800.00, 'WhatsApp Image 2024-10-20 at 8.13.28 PM (9).jpeg', 'formulario.pdf', '2024-10-25', '', '2024-10-18', 400.00, 40, 'credito', '2024-10-26', 1);
 
 --
 -- Índices para tablas volcadas
@@ -618,6 +717,12 @@ ALTER TABLE `ingreso_stock`
   ADD KEY `cod_ingreso` (`cod_ingreso`);
 
 --
+-- Indices de la tabla `ingreso_stock_herra`
+--
+ALTER TABLE `ingreso_stock_herra`
+  ADD PRIMARY KEY (`id_ingreso_stock_herra`);
+
+--
 -- Indices de la tabla `item`
 --
 ALTER TABLE `item`
@@ -665,17 +770,19 @@ ALTER TABLE `salida_herramienta`
 -- Indices de la tabla `salida_material`
 --
 ALTER TABLE `salida_material`
-  ADD PRIMARY KEY (`id_salida`),
-  ADD UNIQUE KEY `cod_salida` (`cod_salida`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD PRIMARY KEY (`id_salida`);
 
 --
 -- Indices de la tabla `salida_stock`
 --
 ALTER TABLE `salida_stock`
-  ADD PRIMARY KEY (`id_salida_stock`),
-  ADD KEY `id_material` (`id_material`),
-  ADD KEY `cod_salida` (`cod_salida`);
+  ADD PRIMARY KEY (`id_salida_stock`);
+
+--
+-- Indices de la tabla `salida_stock_herra`
+--
+ALTER TABLE `salida_stock_herra`
+  ADD PRIMARY KEY (`id_salida_stock_herra`);
 
 --
 -- Indices de la tabla `usuario`
@@ -734,19 +841,25 @@ ALTER TABLE `herramienta`
 -- AUTO_INCREMENT de la tabla `ingreso_herramienta`
 --
 ALTER TABLE `ingreso_herramienta`
-  MODIFY `id_ingreso_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ingreso_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
-  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_stock`
 --
 ALTER TABLE `ingreso_stock`
-  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_ingreso_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT de la tabla `ingreso_stock_herra`
+--
+ALTER TABLE `ingreso_stock_herra`
+  MODIFY `id_ingreso_stock_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `item`
@@ -788,19 +901,25 @@ ALTER TABLE `proyecto`
 -- AUTO_INCREMENT de la tabla `salida_herramienta`
 --
 ALTER TABLE `salida_herramienta`
-  MODIFY `id_salida_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_salida_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_material`
 --
 ALTER TABLE `salida_material`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_stock`
 --
 ALTER TABLE `salida_stock`
-  MODIFY `id_salida_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_salida_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `salida_stock_herra`
+--
+ALTER TABLE `salida_stock_herra`
+  MODIFY `id_salida_stock_herra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -812,7 +931,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -836,13 +955,6 @@ ALTER TABLE `ingreso_stock`
 --
 ALTER TABLE `salida_material`
   ADD CONSTRAINT `salida_material_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
-
---
--- Filtros para la tabla `salida_stock`
---
-ALTER TABLE `salida_stock`
-  ADD CONSTRAINT `salida_stock_ibfk_1` FOREIGN KEY (`id_material`) REFERENCES `material` (`id_material`),
-  ADD CONSTRAINT `salida_stock_ibfk_2` FOREIGN KEY (`cod_salida`) REFERENCES `salida_material` (`cod_salida`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

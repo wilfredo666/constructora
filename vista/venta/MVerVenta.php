@@ -53,7 +53,7 @@ $venta = ControladorVenta::ctrInfoVenta($id);
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
                 <br>
-                <b>Código de venta: v-00<?php echo $venta["id_venta"]; ?></b><br>
+                <b>Código de venta: <?php echo $venta["id_venta"]; ?></b><br>
                 <!-- <b>Order ID:</b> -->
               </div>
               <!-- /.col -->
@@ -70,8 +70,6 @@ $venta = ControladorVenta::ctrInfoVenta($id);
                       <th>Descripcion</th>
                       <th>Fecha de venta</th>
                       <th>Fecha de entrega</th>
-                      <th>A cuenta</th>
-                      <th>Nro de Cuotas</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -80,8 +78,6 @@ $venta = ControladorVenta::ctrInfoVenta($id);
                       <td><?php echo $venta["nombre_proyecto"]; ?></td>
                       <td><?php echo $venta["fecha_venta"]; ?></td>
                       <td><?php echo $venta["fecha_entrega"]; ?></td>
-                      <td><?php echo $venta["a_cuenta"]; ?></td>
-                      <td><?php echo $venta["nro_cuotas"]; ?></td>
                     </tr>
                   </tbody>
                 </table>
@@ -97,24 +93,28 @@ $venta = ControladorVenta::ctrInfoVenta($id);
                 <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                   <?php echo $venta["observaciones_venta"]; ?>
                   <br>
-                <p class="lead">Archivos:</p>
+                <p class="lead">Descargar Archivos:</p>
 
                 <?php
                 if ($venta['archivo_plano'] != "") {
                 ?>
-                  <a href="assest/dist/img/archivos/<?php echo $venta['archivo_plano']; ?>" style="text-decoration: none;" download> Plano:
-                    <img src="assest/dist/img/archivos/<?php echo $venta["archivo_plano"]; ?>" alt="Descargar Archivo" style="max-width: 100px; height: auto;">
-                  </a>
+                  <button class="btn-info rounded mb-2" style="width: 250px;">
+                    <a href="assest/dist/img/archivos/<?php echo $venta['archivo_plano']; ?>" style="text-decoration: none; color:white;" download> Descargar Plano
+                    </a>
+                  </button>
+
                 <?php
                 }
                 ?>
-
+                <br>
                 <?php
                 if ($venta['archivo_contrato'] != "") {
                 ?>
-                  <a href="assest/dist/img/archivos/<?php echo $venta['archivo_contrato']; ?>" style="text-decoration: none;" download> Contrato:
-                    <img src="assest/dist/img/archivos/<?php echo $venta['archivo_contrato']; ?>" alt="Descargar Archivo" style="max-width: 100px; height: auto;">
-                  </a>
+                  <button class="btn-success rounded mb-5" style="width: 250px;">
+                    <a href="assest/dist/img/archivos/<?php echo $venta['archivo_contrato']; ?>" style="text-decoration: none; color:white;" download> Descargar Contrato
+
+                    </a>
+                  </button>
                 <?php
                 }
                 ?>
@@ -137,7 +137,7 @@ $venta = ControladorVenta::ctrInfoVenta($id);
                     </tr>
                     <tr>
                       <th>Nro de cuotas:</th>
-                      <td><?php echo $venta['nro_cuotas']; ?> Bs.</td>
+                      <td><?php echo $venta['nro_cuotas']; ?></td>
                     </tr>
                     <tr>
                       <th>Total:</th>

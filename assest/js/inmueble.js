@@ -183,7 +183,16 @@ console.log(datosInmueble);
 
       inmueble.value = datosInmueble.desc_item;
       idInmuebleBD.value = datosInmueble.desc_item;
-      inmuebleBD.value = JSON.stringify(datosInmueble);
+      
+      //datos
+      const datosFiltrados = {
+        id_item: datosInmueble.id_item,
+        cod_item: datosInmueble.cod_item,
+        desc_item: datosInmueble.desc_item,
+        clasificacion: datosInmueble.clasificacion,
+      };
+
+      inmuebleBD.value = JSON.stringify(datosFiltrados);
       $('#modal-lg').modal('hide');
       
     }

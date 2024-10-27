@@ -149,7 +149,6 @@ class ModeloMaterial
 
   static public function mdlRegNotaSalida($data)
   {
-
     $codSalida = $data["codSalida"];
     $conceptoSalida = $data["conceptoSalida"];
     $fechaHora = $data["fechaHora"];
@@ -161,9 +160,22 @@ class ModeloMaterial
     $stmt = Conexion::conectar()->prepare("insert into salida_material(fecha_salida, cod_salida, solicitado_por, id_usuario, descripcion, detalle_salida, cod_proyecto) values('$fechaHora', 'NS-$codSalida', $solicitadoPor, $usuario, '$conceptoSalida', '$materiales', '$codProyecto')");
 
     if ($stmt->execute()) {
+
+      //transformar de json a array
+      $materiales = json_decode($data["materiales"], true);
+
+      //registrar en la bd - tabla salida stock
+      for ($i = 0; $i < count($materiales); $i++) {
+        $idMaterial = $materiales[$i]["idMaterial"];
+        $cantMaterial = $materiales[$i]["cantMaterial"];
+
+        $salida_sql = Conexion::conectar()->prepare("insert into salida_stock(id_material_m, cantidad_m, cod_salida_m) values($idMaterial, $cantMaterial, 'NS-$codSalida')");
+        $salida_sql->execute();
+      }
+
       return "ok";
     } else {
-      return "error";
+      return "n";
     }
 
     $stmt->close();
@@ -204,6 +216,8 @@ class ModeloMaterial
     $stmt->close();
     $stmt->null;
   }
+
+  
 
   static public function mdlCantidadMaterials()
   {

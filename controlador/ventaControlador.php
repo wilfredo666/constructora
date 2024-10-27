@@ -43,7 +43,7 @@ class ControladorVenta
     $data = array(
       "codVenta" => $_POST["codVenta"],
       "cliente" => $_POST["cliente"],
-      "idInmuebleBD" => $_POST["idInmuebleBD"],
+      "idInmuebleBD" => $_POST["nomVentaBD"],
       "totalVenta" => $_POST["totalVenta"],
       "acuenta" => $_POST["acuenta"],
       "cuotas" => $_POST["cuotas"],

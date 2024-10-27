@@ -55,7 +55,7 @@
             <div class="form-group col-md-12">
               <label for="">Detalle <span class="text-muted">(Descripcion del inmueble a vender)</span></label>
               <div class="input-group">
-                <input type="text" class="form-control" id="nomVenta" name="nomVenta">
+                <input type="text" class="form-control" id="nomVenta" name="nomVenta" readonly>
                 <input type="hidden" class="form-control" id="nomVentaBD" name="nomVentaBD">
                 <input type="hidden" class="form-control" id="idInmuebleBD" name="idInmuebleBD">
                 <span class="input-group-append">
