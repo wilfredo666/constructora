@@ -53,7 +53,7 @@
             <?php
             if ($_SESSION["categoria"] == "Administrador") {
             ?>
-              <li class="nav-header">ADMINISTRACION</li>
+              <li class="nav-header text-info">ADMINISTRACION</li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
@@ -162,7 +162,7 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-header">INVENTARIOS</li>
+            <li class="nav-header text-info">INVENTARIOS</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-grip-horizontal"></i>
@@ -198,83 +198,6 @@
                 </li>
               </ul>
             </li>
-
-            <li class="nav-header">OTROS MOVIMIENTOS</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-tty"></i>
-                <p>
-                  Adquisiciones
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VAdquisicion" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Lista de Adquisiciones</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-money"></i>
-                <p>
-                  Plan de Cobro
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VPlanCobro" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Lista de Plan de Cobros</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-header">COMERCIAL</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cash-register"></i>
-                <p>
-                  Ventas
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-
-
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="FNuevaVenta" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Nueva Venta</p>
-                  </a>
-                </li>
-              </ul>
-
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VListaVenta" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Lista de Ventas</p>
-                  </a>
-                </li>
-              </ul>
-
-              <!-- <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VSalidaMaterial" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Reporte Salidas</p>
-                  </a>
-                </li>
-              </ul> -->
-            </li>
-
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-boxes"></i>
@@ -367,6 +290,83 @@
                   </a>
                 </li>
               </ul> -->
+            </li>
+
+
+
+            <li class="nav-header text-info">COMERCIAL</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cash-register"></i>
+                <p>
+                  Ventas
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="FNuevaVenta" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Nueva Venta</p>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VListaVenta" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Lista de Ventas</p>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VSalidaMaterial" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Reporte Salidas</p>
+                  </a>
+                </li>
+              </ul> -->
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-tty"></i>
+                <p>
+                  Adquisiciones
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VAdquisicion" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Lista de Adquisiciones</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-money"></i>
+                <p>
+                  Plan de Cobro
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="VPlanCobro" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Lista de Plan de Cobros</p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="nav-item">

@@ -21,7 +21,8 @@ class ModeloVenta
     $stmt->null;
   }
 
-  static public function mdlInfoVenta($id){
+  static public function mdlInfoVenta($id)
+  {
     $stmt = Conexion::conectar()->prepare("SELECT *, venta.fecha_entrega as fecha_entrega FROM venta
     /* JOIN item ON item.desc_item=venta.detalle_venta  */
     JOIN cliente ON cliente.id_cliente=venta.id_cliente
@@ -38,7 +39,7 @@ class ModeloVenta
   static public function mdlRegVenta($data) //ok
   {
     date_default_timezone_set('America/La_Paz');
-    $fechaActual = date('Y-m-d'); 
+    $fechaActual = date('Y-m-d');
 
     $codVenta = $data["codVenta"];
     $cliente = $data["cliente"];
@@ -85,7 +86,4 @@ class ModeloVenta
     $stmt->close();
     $stmt->null;
   }
-  
-
-
 }

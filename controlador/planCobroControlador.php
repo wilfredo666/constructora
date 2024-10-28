@@ -29,7 +29,7 @@ class ControladorPlanCobro
     require "../modelo/planCobroModelo.php";
 
     $data = array(
-      "id_venta" => $_POST["id_venta"],
+      "id_venta" => $_POST["idVenta"],
       "monto_cobro" => $_POST["monto_cobro"],
       "fecha_cobro" => $_POST["fecha_cobro"],
       "observacion_cobro" => $_POST["observacion_cobro"],

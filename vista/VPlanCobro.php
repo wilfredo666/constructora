@@ -28,23 +28,23 @@
         $PlanCobro = ControladorPlanCobro::ctrInfoPlanCobros();
         $cont = 0;
         foreach ($PlanCobro as $value) {
-          $cont = $cont+1;
+          $cont = $cont + 1;
         ?>
           <tr>
             <td style="width:20px;"><?php echo $cont ?></td>
-            <td>v-00<?php echo $value["id_venta"]; ?></td>
+            <td><?php echo $value["id_venta"]; ?></td>
             <td><?php echo $value["monto_cobro"]; ?></td>
             <td><?php echo $value["fecha_cobro"]; ?></td>
             <td><?php echo $value["observacion_cobro"]; ?></td>
 
             <td>
               <div class="btn-group">
-                <button class="btn btn-sm btn-secondary"
-                  onclick="MEditPlanCobro(<?php echo $value["id_plan_cobro"]; ?>)">
+                <!--  <button class="btn btn-sm btn-secondary"
+                  onclick="MEditPlanCobro(<?php echo $value['id_plan_cobro']; ?>)">
                   <i class="fas fa-edit"></i>
-                </button>
+                </button> -->
                 <button class="btn btn-sm btn-danger"
-                  onclick="MEliPlanCobro(<?php echo $value["id_plan_cobro"]; ?>)">
+                  onclick="MEliPlanCobro(<?php echo $value['id_plan_cobro']; ?>)">
                   <i class="fas fa-trash"></i>
                 </button>
               </div>

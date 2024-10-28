@@ -1,10 +1,10 @@
-function MNuevoPlanCobro() { //ok
+function MNuevoPlanCobro(id) { //ok
   $("#modal-default").modal("show")
 
   var obj = ""
   $.ajax({
     type: "POST",
-    url: "vista/planCobro/FNuevoPlanCobro.php",
+    url: "vista/planCobro/FNuevoPlanCobro.php?id="+id,
     data: obj,
     success: function (data) {
       $("#content-default").html(data)

@@ -30,7 +30,7 @@
         $Venta = ControladorVenta::ctrInfoVentas();
         $contador = 0;
         foreach ($Venta as $value) {
-          $contador = $contador+ 1;
+          $contador = $contador + 1;
           $descItem = json_decode($value["detalle_venta"], true);
 
         ?>
