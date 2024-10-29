@@ -101,4 +101,14 @@ class ModeloUsuario
     $stmt->close();
     $stmt->null;
   }
+
+  //PERMISOS DE USUARIO
+  static public function mdlUsuarioPermiso($idUsuario,$idPermiso){
+    $stmt = Conexion::conectar()->prepare("select * from permiso_usuario where id_usuario=$idUsuario and id_permiso=$idPermiso");
+
+    $stmt->execute();
+    return $stmt->fetch();
+    $stmt->close();
+    $stmt->null;
+  }
 }

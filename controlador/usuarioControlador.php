@@ -23,7 +23,7 @@ class ControladorUsuario
 
       $respuesta = ModeloUsuario::mdlAccesoUsuario($usuario);
 
-      if($respuesta==false) {
+      if ($respuesta == false) {
         echo "<p class='text-danger text-center bg-red mt-1 rounded-pill'>Error de acceso, intente de nuevo</p>";
         return;
       }
@@ -32,17 +32,16 @@ class ControladorUsuario
         $_SESSION["ingreso"] = "ok";
         $_SESSION["email"] = $respuesta["email"];
         $_SESSION["nombre"] = $respuesta["nombre"];
-        $_SESSION["idUsuario"]=$respuesta["id_usuario"];
-        $_SESSION["categoria"]=$respuesta["categoria"];
+        $_SESSION["idUsuario"] = $respuesta["id_usuario"];
+        $_SESSION["categoria"] = $respuesta["categoria"];
 
 
         echo '<script>
                  window.location="inicio";
                 </script>';
       } else {
-        
-        echo "<p class='text-danger text-center bg-red mt-1 rounded-pill'>Error de acceso, intente de nuevo</p>";
 
+        echo "<p class='text-danger text-center bg-red mt-1 rounded-pill'>Error de acceso, intente de nuevo</p>";
       }
     }
   }
@@ -98,19 +97,26 @@ class ControladorUsuario
   }
 
 
-  static public function ctrEliUsuario(){
+  static public function ctrEliUsuario()
+  {
     require "../modelo/usuarioModelo.php";
 
-    $id=$_POST["id"];
+    $id = $_POST["id"];
 
     $respuesta = ModeloUsuario::mdlEliUsuario($id);
     echo $respuesta;
-
   }
 
-  static public function ctrCantidadUsuarios(){
+  static public function ctrCantidadUsuarios()
+  {
     $respuesta = ModeloUsuario::mdlCantidadUsuarios();
     return $respuesta;
   }
 
+  // PERMISOS
+  static public function ctrUsuarioPermiso($idUsuario, $idPermiso)
+  {
+    $respuesta = ModeloUsuario::mdlUsuarioPermiso($idUsuario, $idPermiso);
+    return $respuesta;
+  }
 }

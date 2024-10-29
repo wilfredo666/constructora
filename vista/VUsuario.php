@@ -64,7 +64,7 @@
                   <?php 
           if ($_SESSION["categoria"] == 'Administrador') {
                   ?>
-                  <li><a href="<?php echo $base_url; ?>usuario/permisos" class="dropdown-item">Permisos</a></li>
+                  <li><a href="<?php echo $base_url . 'usuario/permisos?id='.$value["id_usuario"]; ?> " class="dropdown-item">Permisos</a></li>
                   <?php
           }
                   ?>
