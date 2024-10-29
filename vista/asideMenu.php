@@ -28,7 +28,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="inicio" class="brand-link">
-        <img src="<?php echo $base_url; ?>assest/dist/img/AdminLTELogo.png"
+        <img src="<?php echo $base_url; ?>assest/dist/img/logotipo-contructora.jpg"
           class="brand-image img-circle elevation-3" style="opacity: .8" style="width:300px">
         <span class="brand-text font-weight-light">Sitema Constructora</span>
       </a>
@@ -38,7 +38,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?php echo $base_url; ?>assest/dist/img/user2-160x160.jpg"
+            <img src="<?php echo $base_url; ?>assest/dist/img/user_default.png"
               class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">

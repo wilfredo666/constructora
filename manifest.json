@@ -1,0 +1,27 @@
+{
+  "name":"Sistema Constructora",
+  "short_name":"Constructora",
+  "theme_color":"#D6B436",
+  "background_color":"#ffffff",
+  "display":"browser",
+  "orientation":"any",
+  "scope":"/",
+  "start_url":"/",
+  "icons":[
+    {
+      "src":"iconos/logotipo-contructora-192.png",
+      "type":"image/png",
+      "sizes":"192x192"
+    },
+    {
+      "src":"iconos/logotipo-contructora-256.png",
+      "type":"image/png",
+      "sizes":"256x256"
+    },
+    {
+      "src":"iconos/logotipo-contructora-512.png",
+      "type":"image/png",
+      "sizes":"512x512"
+    }
+  ]
+}

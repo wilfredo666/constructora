@@ -14,7 +14,7 @@ session_start();
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $base_url; ?>assest/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo $base_url; ?>assest/dist/css/adminlte.min.css">
+
   <link rel="stylesheet" href="<?php echo $base_url; ?>assest/dist/css/adminlte.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo $base_url; ?>assest/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -38,12 +38,17 @@ session_start();
   <!-- dropzonejs -->
   <link rel="stylesheet" href="<?php echo $base_url; ?>assest/plugins/dropzone/min/dropzone.min.css">
   <!--icono-->
-  <link rel="icon" href="<?php echo $base_url; ?>assest/dist/img/material/product_default.png">
+  <link rel="icon" href="<?php echo $base_url; ?>assest/dist/img/logotipo-contructora.jpg">
 
   <script type="text/javascript" src="<?php echo $base_url; ?>assest/dist/js/otros/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo $base_url; ?>assest/dist/js/otros/moment.min.js"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assest/dist/js/otros/daterangepicker.css" />
   <link href="https://cdn.jsdelivr.net/npm/fontawesome-4.7@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Añadido para PWA -->
+<meta name="theme-color" content="#D6B436">
+<link rel="apple-touch-icon" sizes="180x180" href="iconos/logotipo-contructora-192.png">
+<link rel="manifest" href="manifest.json" />
 
   <style>
     table {

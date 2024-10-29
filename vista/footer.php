@@ -528,6 +528,8 @@ seccion de modals
   })
 </script>
 
+<!--para registrar PWA-->
+<script src="./regist_serviceWorker.js"></script>
 
 </body>
 

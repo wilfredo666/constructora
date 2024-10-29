@@ -1,0 +1,17 @@
+Plataforma: https://byet.host/
+
+
+Cpanel URL: http://cpanel.byethost13.com/
+Cpanel Username: b13_37597377
+Cpanel Password: Admin123
+Your URL: http://constructora.byethost13.com or http://www.constructora.byethost13.com
+FTP Server : ftpupload.net
+FTP Login : b13_37597377
+FTP Password : Admin123
+MySQL Database Name: b13_37597377_constructora
+MySQL Username : b13_37597377
+MySQL Password : Admin123
+MySQL Server: sql101.byethost13.com
+
+
+
