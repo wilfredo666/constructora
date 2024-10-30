@@ -170,3 +170,21 @@ function MEliUsuario(id){
     }
   })
 }
+
+//permisos
+function actualizarPermiso(idUsuario, idPermiso) {
+  var obj = {
+    idUsuario: idUsuario,
+    idPermiso: idPermiso
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/usuarioControlador.php?ctrActualizarPermiso",
+    data: obj,
+    success: function(data) {
+      console.log(data);
+
+    }
+  })
+}

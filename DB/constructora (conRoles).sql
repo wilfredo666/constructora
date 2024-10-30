@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2024 a las 21:47:57
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Servidor: localhost:3307
+-- Tiempo de generación: 30-10-2024 a las 03:36:21
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `adquisicion` (
   `fecha_adq` date DEFAULT NULL,
   `detalle_adq` text DEFAULT NULL,
   `fecha_entrega` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `adquisicion`
@@ -56,7 +56,7 @@ CREATE TABLE `cliente` (
   `ci_cliente` varchar(50) DEFAULT NULL,
   `telefono_cli` varchar(50) DEFAULT NULL,
   `direccion_cli` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -80,7 +80,7 @@ CREATE TABLE `codigo_material` (
   `id_codigo` int(11) NOT NULL,
   `cod_clasificador` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `codigo_material`
@@ -131,7 +131,7 @@ CREATE TABLE `contrato` (
   `tipo_venta` varchar(50) DEFAULT NULL,
   `archivo_contrato` varchar(255) DEFAULT NULL,
   `estado_contrato` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `contrato`
@@ -156,7 +156,7 @@ CREATE TABLE `detalle_cobro` (
   `monto_cobro` decimal(10,2) DEFAULT NULL,
   `fecha_cobro` date DEFAULT NULL,
   `desc_cobro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,7 @@ CREATE TABLE `herramienta` (
   `img_herramienta` varchar(255) DEFAULT NULL,
   `cod_clasificacion_her` varchar(50) DEFAULT NULL,
   `estado_herramienta` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `herramienta`
@@ -199,7 +199,7 @@ CREATE TABLE `ingreso_herramienta` (
   `detalle_ingreso_herra` text NOT NULL,
   `cod_proyecto` varchar(50) NOT NULL,
   `fecha_ingreso_herra` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ingreso_herramienta`
@@ -237,7 +237,7 @@ CREATE TABLE `ingreso_material` (
   `descripcion` text DEFAULT NULL,
   `detalle_ingreso` text DEFAULT NULL,
   `cod_proyecto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `ingreso_material`
@@ -262,7 +262,7 @@ CREATE TABLE `ingreso_stock` (
   `id_material` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `cod_ingreso` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `ingreso_stock`
@@ -294,7 +294,7 @@ CREATE TABLE `ingreso_stock_herra` (
   `id_herramienta` int(11) NOT NULL,
   `cantidad_h` int(11) NOT NULL,
   `cod_ingreso_h` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ingreso_stock_herra`
@@ -324,7 +324,7 @@ CREATE TABLE `item` (
   `desc_item` varchar(255) DEFAULT NULL,
   `clasificacion` varchar(100) NOT NULL,
   `estado_item` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `item`
@@ -359,7 +359,7 @@ CREATE TABLE `material` (
   `img_material` varchar(255) DEFAULT NULL,
   `estado_material` tinyint(1) DEFAULT 1,
   `cod_clasificador` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `material`
@@ -379,7 +379,7 @@ INSERT INTO `material` (`id_material`, `cod_material`, `desc_material`, `unidad`
 CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `desc_permiso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -391,7 +391,8 @@ INSERT INTO `permiso` (`id_permiso`, `desc_permiso`) VALUES
 (3, 'Inmuebles'),
 (4, 'Cliente'),
 (5, 'Proyecto'),
-(6, 'Proveedor');
+(6, 'Proveedor'),
+(7, 'Venta');
 
 -- --------------------------------------------------------
 
@@ -403,7 +404,15 @@ CREATE TABLE `permiso_usuario` (
   `id_permiso_usuario` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_permiso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `permiso_usuario`
+--
+
+INSERT INTO `permiso_usuario` (`id_permiso_usuario`, `id_usuario`, `id_permiso`) VALUES
+(5, 1, 1),
+(6, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -422,7 +431,7 @@ CREATE TABLE `personal` (
   `telefono` varchar(20) DEFAULT NULL,
   `departamento` varchar(100) DEFAULT NULL,
   `estado_personal` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `personal`
@@ -444,7 +453,7 @@ CREATE TABLE `plan_cobro` (
   `monto_cobro` decimal(10,2) DEFAULT NULL,
   `fecha_cobro` date DEFAULT NULL,
   `observacion_cobro` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `plan_cobro`
@@ -471,7 +480,7 @@ CREATE TABLE `proveedor` (
   `telefono_pro` varchar(50) DEFAULT NULL,
   `email_pro` varchar(50) DEFAULT NULL,
   `estado_pro` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -501,7 +510,7 @@ CREATE TABLE `proyecto` (
   `personal_encargado` int(11) DEFAULT NULL,
   `encargado_superior` int(11) NOT NULL,
   `estado_proyecto` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -526,7 +535,7 @@ CREATE TABLE `salida_herramienta` (
   `descripcion_herra` text NOT NULL,
   `detalle_salida_herra` text NOT NULL,
   `cod_proyecto` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `salida_herramienta`
@@ -555,7 +564,7 @@ CREATE TABLE `salida_material` (
   `descripcion` text DEFAULT NULL,
   `detalle_salida` text DEFAULT NULL,
   `cod_proyecto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `salida_material`
@@ -597,7 +606,7 @@ CREATE TABLE `salida_stock` (
   `id_material_m` int(11) NOT NULL,
   `cantidad_m` int(11) NOT NULL,
   `cod_salida_m` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `salida_stock`
@@ -620,7 +629,7 @@ CREATE TABLE `salida_stock_herra` (
   `id_herramienta_h` int(11) NOT NULL,
   `cantidad_h` int(11) NOT NULL,
   `cod_salida_h` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `salida_stock_herra`
@@ -643,7 +652,7 @@ CREATE TABLE `usuario` (
   `password` varchar(255) NOT NULL,
   `estado_usuario` tinyint(1) DEFAULT 1,
   `categoria` varchar(50) NOT NULL DEFAULT 'Encargado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -676,7 +685,7 @@ CREATE TABLE `venta` (
   `forma_pago` varchar(50) DEFAULT NULL,
   `fecha_emision_venta` date NOT NULL,
   `estado_venta` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `venta`
@@ -925,13 +934,13 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `permiso`
 --
 ALTER TABLE `permiso`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `permiso_usuario`
 --
 ALTER TABLE `permiso_usuario`
-  MODIFY `id_permiso_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permiso_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `personal`

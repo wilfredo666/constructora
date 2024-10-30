@@ -5,7 +5,8 @@ if (isset($ruta["query"])) {
   if (
     $ruta["query"] == "ctrRegUsuario" ||
     $ruta["query"] == "ctrEditUsuario" ||
-    $ruta["query"] == "ctrEliUsuario"
+    $ruta["query"] == "ctrEliUsuario" ||
+    $ruta["query"] == "ctrActualizarPermiso"
   ) {
     $metodo = $ruta["query"];
     $usuario = new ControladorUsuario();
@@ -118,5 +119,18 @@ class ControladorUsuario
   {
     $respuesta = ModeloUsuario::mdlUsuarioPermiso($idUsuario, $idPermiso);
     return $respuesta;
+  }
+
+  static public function ctrActualizarPermiso()
+  {
+    require "../modelo/usuarioModelo.php";
+
+    $data = array(
+      "idUsuario" => $_POST["idUsuario"],
+      "idPermiso" => $_POST["idPermiso"]
+    );
+
+    $respuesta = ModeloUsuario::mdlActualizarPermiso($data);
+    echo $respuesta;
   }
 }
