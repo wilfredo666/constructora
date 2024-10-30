@@ -1,3 +1,12 @@
+<?php
+function habilitado($idPermiso)
+{
+  $id = $_SESSION["idUsuario"];
+  $permiso = ControladorUsuario::ctrUsuarioPermiso($id, $idPermiso);
+  return $permiso;
+}
+?>
+
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
@@ -54,23 +63,28 @@
             if ($_SESSION["categoria"] == "Administrador") {
             ?>
               <li class="nav-header text-info">ADMINISTRACION</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Usuarios
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?php echo $base_url; ?>VUsuario" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
-                      <p>Lista de usuarios</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+
+              <?php if (habilitado(1) != null) {
+              ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                      Usuarios
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="<?php echo $base_url; ?>VUsuario" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Lista de usuarios</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php } ?>
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-street-view"></i>

@@ -114,6 +114,7 @@ class ModeloUsuario
     $stmt->null;
   }
 
+
   static public function mdlActualizarPermiso($data)
   {
     $idUsuario = $data["idUsuario"];
