@@ -519,13 +519,90 @@ seccion de modals
         }
       }
     })
+  });
 
+  $(function() {
+    $("#DataTable_AdquisicionH").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+    })
+  });
+
+  $(function() {
+    $("#DataTable_AdquisicionM").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+    })
   });
 
   /*select2 para formulario NE*/
   $('.select2bs4').select2({
     theme: 'bootstrap4'
   })
+</script>
+
+<script>
+  $(document).ready(function() {
+    // Inicializar las tablas
+    var table1 = $('#DataTable_AdquisicionM').DataTable();
+    var table2 = $('#DataTable_AdquisicionH').DataTable();
+
+    // Alterna entre tablas
+    $('input[name="tableOption"]').on('change', function() {
+      $('.data-table').hide();
+      var selectedTable = $(this).val();
+      $('#' + selectedTable).show();
+      
+      // Redimensionar el DataTable 
+      if (selectedTable === 'table1Container') {
+        table1.columns.adjust().draw();
+      } else {
+        table2.columns.adjust().draw();
+      }
+    });
+  });
 </script>
 
 <!--para registrar PWA-->

@@ -85,97 +85,114 @@ function habilitado($idPermiso)
                 </li>
               <?php } ?>
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-street-view"></i>
-                  <p>
-                    Personal
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="VPersonal" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
-                      <p>Lista de Personal</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-university"></i>
-                  <p>
-                    Inmuebles
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="VInmueble" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
-                      <p>Lista de Inmuebles</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-users"></i>
-                  <p>
-                    Clientes
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="VCliente" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
-                      <p>Lista de Clientes</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <?php if (habilitado(2) != null) {
+              ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-street-view"></i>
+                    <p>
+                      Personal
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="VPersonal" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Lista de Personal</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php } ?>
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-user-circle"></i>
-                  <p>
-                    Proveedores
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="VProveedor" class="nav-link">
-                      <i class="far fa-circle nav-icon text-info"></i>
-                      <p>Lista de Proveedores</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <?php if (habilitado(3) != null) {
+              ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-university"></i>
+                    <p>
+                      Inmuebles
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="VInmueble" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Lista de Inmuebles</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php } ?>
+
+              <?php if (habilitado(4) != null) {
+              ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-users"></i>
+                    <p>
+                      Clientes
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="VCliente" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Lista de Clientes</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php } ?>
+
+              <?php if (habilitado(6) != null) {
+              ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-user-circle"></i>
+                    <p>
+                      Proveedores
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="VProveedor" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Lista de Proveedores</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php } ?>
             <?php
             }
-
             ?>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-briefcase"></i>
-                <p>
-                  Proyectos
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VProyecto" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Lista de Proyectos</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <?php if (habilitado(5) != null) {
+            ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-briefcase"></i>
+                  <p>
+                    Proyectos
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VProyecto" class="nav-link">
+                      <i class="far fa-circle nav-icon text-info"></i>
+                      <p>Lista de Proyectos</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
+
             <li class="nav-header text-info">INVENTARIOS</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -309,35 +326,37 @@ function habilitado($idPermiso)
 
 
             <li class="nav-header text-info">COMERCIAL</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cash-register"></i>
-                <p>
-                  Ventas
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
+            <?php if (habilitado(7) != null) {
+            ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-cash-register"></i>
+                  <p>
+                    Ventas
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
 
 
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="FNuevaVenta" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Nueva Venta</p>
-                  </a>
-                </li>
-              </ul>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="FNuevaVenta" class="nav-link">
+                      <i class="far fa-circle nav-icon text-info"></i>
+                      <p>Nueva Venta</p>
+                    </a>
+                  </li>
+                </ul>
 
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VListaVenta" class="nav-link">
-                    <i class="far fa-circle nav-icon text-info"></i>
-                    <p>Lista de Ventas</p>
-                  </a>
-                </li>
-              </ul>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VListaVenta" class="nav-link">
+                      <i class="far fa-circle nav-icon text-info"></i>
+                      <p>Lista de Ventas</p>
+                    </a>
+                  </li>
+                </ul>
 
-              <!-- <ul class="nav nav-treeview">
+                <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VSalidaMaterial" class="nav-link">
                     <i class="far fa-circle nav-icon text-info"></i>
@@ -345,7 +364,8 @@ function habilitado($idPermiso)
                   </a>
                 </li>
               </ul> -->
-            </li>
+              </li>
+            <?php } ?>
 
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -355,6 +375,14 @@ function habilitado($idPermiso)
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="FNotaAdquisicion" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                    <p>Nueva Adquisición</p>
+                  </a>
+                </li>
+              </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="VAdquisicion" class="nav-link">

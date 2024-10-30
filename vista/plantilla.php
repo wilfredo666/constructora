@@ -113,6 +113,7 @@ session_start();
         "FNotaSalidaMat",
         "FNotaSalidaHerr",
         "permisos",
+        "FNotaAdquisicion",
       ];
 
       if (in_array($_GET["ruta"], $rutas_validas)) {
