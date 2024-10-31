@@ -181,7 +181,6 @@ class ModeloMaterial
 
     $stmt->close();
     $stmt->null;
-    
   }
 
   static public function mdlRegNotaIngreso($data)
@@ -279,24 +278,46 @@ class ModeloMaterial
   static public function mdlStockMaterial($id)
   {
     //ingresos
-    $stmt = Conexion::conectar()->prepare("SELECT sum(cantidad) as totIngresos FROM ingreso_stock WHERE id_material=$id");
+    /* $stmt = Conexion::conectar()->prepare("SELECT sum(cantidad) as totIngresos FROM ingreso_stock WHERE id_material=$id");
     $stmt->execute();
 
-    $ingresos = $stmt->fetch();
+    if ($stmt->fetch() == null) {
+      $ingresos = 0;
+    } else {
+      $ingresos = $stmt->fetch();
+    } */
+
+    echo $id;
+
+
 
     //salidas
-    $stmt = Conexion::conectar()->prepare("SELECT sum(cantidad) as totSalidas FROM salida_stock WHERE id_material=$id");
-    $stmt->execute();
+    /*  $stmt2 = Conexion::conectar()->prepare("SELECT sum(cantidad_m) as totSalidas FROM salida_stock WHERE id_material_m=$id");
+    $stmt2->execute();
 
-    $salidas = $stmt->fetch();
+    if ($stmt2->fetch() == null) {
+      $salidas = 0;
+    } else {
+      $salidas = $stmt2->fetch();
+    }
 
-    return $data = array(
+    $data = array(
       "ingresos" => $ingresos["totIngresos"],
       "salidas" => $salidas["totSalidas"]
-    );
+    ); */
 
-    $stmt->close();
-    $stmt->null;
+    /* $stmt->close();
+    $stmt->null; */
+  }
+
+  static public function mdlMaterialStock($id)
+  {
+    echo $id;
+  }
+
+  static public function prueba()
+  {
+    echo "eeee";
   }
 
   static public function BusRepMaterial($data)
