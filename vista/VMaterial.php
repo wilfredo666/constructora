@@ -41,8 +41,8 @@
             <td><span class="badge badge-warning">
                 <?php
                 $stock = ControladorMaterial::ctrStockMaterial($value["id_material"]);
-                /* echo $totStock = $stock["ingresos"] - $stock["salidas"]; */
-                echo ($stock);
+                 echo $totStock = $stock["ingresos"] - $stock["salidas"];
+         //var_dump($stock);
                 ?>
               </span>
             </td>

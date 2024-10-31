@@ -168,10 +168,9 @@ class ControladorMaterial
 
   static public function ctrStockMaterial($id)
   {
-    $res = ModeloMaterial::prueba();
-    var_dump($res);
 
-    //return $respuesta;
+    $respuesta=ModeloMaterial::mdlStockMaterial($id);
+    return $respuesta;
   }
 
   static public function ctrCantidadMaterials()

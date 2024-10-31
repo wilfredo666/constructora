@@ -217,8 +217,6 @@ class ModeloMaterial
     $stmt->null;
   }
 
-  
-
   static public function mdlCantidadMaterials()
   {
     $stmt = Conexion::conectar()->prepare("select count(*) as Material from Material");
@@ -274,29 +272,37 @@ class ModeloMaterial
     $stmt->null;
   }
 
-
   /* STOCK Material */
   static public function mdlStockMaterial($id)
   {
-    //ingresos
-    $stmt = Conexion::conectar()->prepare("SELECT sum(cantidad) as totIngresos FROM ingreso_stock WHERE id_material=$id");
-    $stmt->execute();
+    // Conexión a la base de datos
+    $conn = Conexion::conectar();
 
+    // Consulta de ingresos
+    $stmt = $conn->prepare("SELECT SUM(cantidad) as totIngresos FROM ingreso_stock WHERE id_material = :id");
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
     $ingresos = $stmt->fetch();
+    if ($ingresos["totIngresos"] == null) {
+      $ingresos["totIngresos"] = 0;
+    }
 
-    //salidas
-    $stmt = Conexion::conectar()->prepare("SELECT sum(cantidad) as totSalidas FROM salida_stock WHERE id_material=$id");
-    $stmt->execute();
+    // Consulta de salidas
+    $stmt2 = $conn->prepare("SELECT SUM(cantidad_m) as totSalidas FROM salida_stock WHERE id_material_m = :id");
+    $stmt2->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt2->execute();
+    $salidas = $stmt2->fetch();
+    if ($salidas["totSalidas"] == null) {
+      $salidas["totSalidas"] = 0;
+    }
 
-    $salidas = $stmt->fetch();
-
-    return $data = array(
+    // Datos resultantes
+    $data = array(
       "ingresos" => $ingresos["totIngresos"],
       "salidas" => $salidas["totSalidas"]
     );
 
-    $stmt->close();
-    $stmt->null;
+    return $data;
   }
 
   static public function BusRepMaterial($data)
