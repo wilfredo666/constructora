@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2024 a las 21:37:21
+-- Tiempo de generación: 31-10-2024 a las 20:05:41
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -41,7 +41,10 @@ CREATE TABLE `adquisicion` (
 --
 
 INSERT INTO `adquisicion` (`id_adquisicion`, `cod_adquisicion`, `id_proveedor`, `fecha_adq`, `detalle_adq`, `fecha_entrega`) VALUES
-(2, 'null', 5, '2024-10-17', 'Adquisición de Materiales de Limpieza y otros SI     ', '2024-12-31');
+(5, 'Adq-001', 6, '2024-10-31', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":5,\"valor_unidad\":\"20.00\",\"total\":100},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":4,\"valor_unidad\":\"80.00\",\"total\":320},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":3,\"valor_herramienta\":\"60.00\",\"total\":180}]', '2024-11-04'),
+(6, 'Adq-002', 8, '2024-11-01', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":3,\"valor_unidad\":\"20.00\",\"total\":60},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":2,\"valor_unidad\":\"8.00\",\"total\":16},{\"idHerramienta\":\"3\",\"descHerramienta\":\"Llantas de goma pura, calados                                \",\"cod_herramienta\":\"her-002\",\"cod_clasificacion_her\":\"34300\",\"cantHerramienta\":4,\"valor_herramienta\":\"280.00\",\"total\":1120},{\"idHerramienta\":\"5\",\"descHerramienta\":\"Tiner para pintura\",\"cod_herramienta\":\"her-003\",\"cod_clasificacion_her\":\"34000\",\"cantHerramienta\":5,\"valor_herramienta\":\"60.00\",\"total\":300}]', '2024-11-09'),
+(7, 'Adq-003', 5, '2024-10-31', '[{\"idMaterial\":\"3\",\"descMaterial\":\"Clavos de Calamina 5cm\",\"cod_material\":\"cod_003\",\"unidad\":\"kl\",\"cantMaterial\":1,\"valor_unidad\":\"20.00\",\"total\":20},{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\",\"total\":32}]', '2024-11-10'),
+(8, 'Adq-004', 4, '2024-10-31', '[{\"idMaterial\":\"4\",\"descMaterial\":\"Cola\",\"cod_material\":\"cod_004\",\"unidad\":\"ml\",\"cantMaterial\":4,\"valor_unidad\":\"8.00\",\"total\":32},{\"idMaterial\":\"1\",\"descMaterial\":\"Cemento Coboce\",\"cod_material\":\"cod_001\",\"unidad\":\"BL\",\"cantMaterial\":5,\"valor_unidad\":\"80.00\",\"total\":400}]', '2024-11-10');
 
 -- --------------------------------------------------------
 
@@ -412,13 +415,13 @@ CREATE TABLE `permiso_usuario` (
 --
 
 INSERT INTO `permiso_usuario` (`id_permiso_usuario`, `id_usuario`, `id_permiso`) VALUES
-(9, 1, 2),
-(10, 1, 3),
-(11, 1, 4),
-(12, 1, 1),
-(13, 1, 7),
-(14, 1, 6),
-(15, 1, 5);
+(19, 1, 1),
+(20, 1, 2),
+(21, 1, 3),
+(22, 1, 4),
+(23, 1, 5),
+(25, 1, 6),
+(26, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -666,7 +669,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `estado_usuario`, `categoria`) VALUES
 (1, 'Usuario Administrador', 'admin@hotmail.com', '$2y$10$y5Oc7mG8p4MPuFPvUdOk/.Gkf6iD/3kNqtYm2Lw0fOxRiBrLItehS', 1, 'Administrador'),
-(4, 'Usuario moderador', 'moderador@hotmail.com', '$2y$10$KICMqEmzgqfjwmnfEixSyO8Vs.zDWFkKIVWErOgSgQdTuh8QhWewS', 1, 'Encargado');
+(4, 'Usuario moderador', 'moderador@hotmail.com', '$2y$10$Ik3KGv9wcBWmHYocCRlgB.cFMwaGnzxTck9kGoFYBovTDkN2z/ZDS', 1, 'Encargado');
 
 -- --------------------------------------------------------
 
@@ -868,7 +871,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `adquisicion`
 --
 ALTER TABLE `adquisicion`
-  MODIFY `id_adquisicion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_adquisicion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -946,7 +949,7 @@ ALTER TABLE `permiso`
 -- AUTO_INCREMENT de la tabla `permiso_usuario`
 --
 ALTER TABLE `permiso_usuario`
-  MODIFY `id_permiso_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_permiso_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `personal`

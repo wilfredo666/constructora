@@ -108,6 +108,36 @@ seccion de modals
 <script src="<?php echo $base_url; ?>assest/plugins/jquery-validation/localization/messages_es.js"></script>
 
 <script>
+  //ADQUISICION DE MATERIALES Y HERRAMIENTAS
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        emitirNotaAdquisicion()
+      }
+    });
+    $("#FormRegAdquisicion").validate({
+      rules: {
+        idProveedor: "required",
+        fechaAdquisicion: "required",
+      },
+
+      errorElement: "span",
+      errorPlacement: function(error, element) {
+        error.addClass("invalid-feedback")
+        element.closest(".input-group").append(error)
+      },
+      //destacar
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass("is-invalid")
+      },
+
+      //desmarcar
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass("is-invalid")
+      }
+
+    })
+  })
   //INGRESO DE HERRAMIENTAS
   $(function() {
     $.validator.setDefaults({
@@ -594,7 +624,7 @@ seccion de modals
       $('.data-table').hide();
       var selectedTable = $(this).val();
       $('#' + selectedTable).show();
-      
+
       // Redimensionar el DataTable 
       if (selectedTable === 'table1Container') {
         table1.columns.adjust().draw();

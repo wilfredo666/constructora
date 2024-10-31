@@ -157,7 +157,7 @@ function MEliAdquisicion(id) { //ok
   })
 }
 
-function previsualizarAdquisicion() {  //ok
+function previsualizarAdquisicion() { //ok
   let imagen = document.getElementById("ImgAdquisicion").files[0]
 
   if (imagen["type"] != "image/png" && imagen["type"] != "image/jpeg" && imagen["type"] != "image/jpg") {
@@ -185,4 +185,68 @@ function previsualizarAdquisicion() {  //ok
 
     })
   }
+}
+
+function emitirNotaAdquisicion() {
+
+  let codAdquisicion = document.getElementById("codAdquisicion").value
+  let idProveedor = document.getElementById("idProveedor").value
+  let fechaAdquisicion = document.getElementById("fechaAdquisicion").value
+  let fechaEntrega = document.getElementById("fechaEntrega").value
+
+
+  // PARA AÑADIR TOTAL EN MATERIAL
+  let Mate = JSON.stringify(arregloCarritoNI);
+  const arregloMaterial = JSON.parse(Mate);
+  // Itera sobre el arreglo y calcula el total
+  arregloMaterial.forEach(item => {
+    item.total = item.cantMaterial * parseFloat(item.valor_unidad);
+  });
+
+  // PARA AÑADIR TOTAL EN HERRAMIENTA
+  let Herra = JSON.stringify(arregloCarritoNIH);
+  const arregloHerramienta = JSON.parse(Herra);
+
+  arregloHerramienta.forEach(itemH => {
+    itemH.total = itemH.cantHerramienta * parseFloat(itemH.valor_herramienta);
+  });
+
+  //concatenandos los arreglos
+  const adquisicionProductos = arregloMaterial.concat(arregloHerramienta);
+
+  let obj = {
+    "codAdquisicion": codAdquisicion,
+    "idProveedor": idProveedor,
+    "adquisicionProductos": JSON.stringify(adquisicionProductos),
+    "fechaAdquisicion": fechaAdquisicion,
+    "fechaEntrega": fechaEntrega
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/adquisicionControlador.php?ctrRegNotaAdquisicion",
+    data: obj,
+    cache: false,
+    success: function (data) {
+      if (data == "ok") {
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Nota de Adquisición de Productos registrada',
+          timer: 1000
+        })
+        setTimeout(function () {
+          location.reload()
+        }, 1200)
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Error de registro',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    }
+  })
 }

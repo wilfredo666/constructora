@@ -6,6 +6,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegAdquisicion" ||
     $ruta["query"] == "ctrInfoAdquisiciones" ||
     $ruta["query"] == "ctrEditAdquisicion" ||
+    $ruta["query"] == "ctrRegNotaAdquisicion" ||
     $ruta["query"] == "ctrEliAdquisicion"
   ) {
     $metodo = $ruta["query"];
@@ -68,6 +69,23 @@ class ControladorAdquisicion
     $data = $_POST["id"];
 
     $respuesta = ModeloAdquisicion::mdlEliAdquisicion($data);
+    echo $respuesta;
+  }
+
+  
+  static public function ctrRegNotaAdquisicion()
+  {
+    require_once "../modelo/adquisicionModelo.php";
+
+    $data = array(
+      "codAdquisicion" => $_POST["codAdquisicion"],
+      "idProveedor" => $_POST["idProveedor"],
+      "adquisicionProductos" => $_POST["adquisicionProductos"],
+      "fechaAdquisicion" => $_POST["fechaAdquisicion"],
+      "fechaEntrega" => $_POST["fechaEntrega"]
+    );
+
+    $respuesta = ModeloAdquisicion::mdlRegNotaAdquisicion($data);
     echo $respuesta;
   }
 }

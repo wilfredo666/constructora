@@ -5,8 +5,8 @@ class ModeloAdquisicion
 
   static public function mdlInfoAdquisiciones() //ok
   {
-    $stmt = Conexion::conectar()->prepare("SELECT * from adquisicion 
-    JOIN proveedor ON proveedor.id_proveedor=adquisicion.id_proveedor");
+    $stmt = Conexion::conectar()->prepare("SELECT * from adquisicion  
+    JOIN proveedor ON proveedor.id_proveedor=adquisicion.id_proveedor ORDER BY id_adquisicion DESC");
     $stmt->execute();
     return $stmt->fetchAll();
     $stmt->close();
@@ -37,7 +37,7 @@ class ModeloAdquisicion
     $stmt = Conexion::conectar()->prepare("SELECT * FROM adquisicion
     JOIN proveedor ON proveedor.id_proveedor=adquisicion.id_proveedor
     where id_adquisicion=$id");
-    
+
     $stmt->execute();
 
     return $stmt->fetch();
@@ -82,6 +82,25 @@ class ModeloAdquisicion
     }
 
     return "ok";
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlRegNotaAdquisicion($data) //ok
+  {
+    $codAdquisicion = $data["codAdquisicion"];
+    $idProveedor = $data["idProveedor"];
+    $adquisicionProductos = $data["adquisicionProductos"];
+    $fechaAdquisicion = $data["fechaAdquisicion"];
+    $fechaEntrega = $data["fechaEntrega"];
+
+    $stmt = Conexion::conectar()->prepare("insert into adquisicion(cod_adquisicion, id_proveedor, fecha_adq, detalle_adq , fecha_entrega) values('$codAdquisicion', $idProveedor, '$fechaAdquisicion', '$adquisicionProductos', '$fechaEntrega')");
+
+    if ($stmt->execute()) {
+      return "ok";
+    } else {
+      return "error";
+    }
     $stmt->close();
     $stmt->null;
   }
